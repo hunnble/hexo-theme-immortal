@@ -1,0 +1,19 @@
+<ul id="slide-nav" class="side-nav">
+  <li>
+    <div class="userView">
+      <div class="background">
+        <img src=<%= config.sidebar_background || theme.sidebar_background %>>
+      </div>
+      <img class="circle" src=<%= config.avatar || theme.avatar %>>
+      <h4 class="white-text"><%= config.title || theme.title %></h4>
+      <span class="white-text subheader"><%= config.author || theme.author %></span>
+    </div>
+  </li>
+  <li>
+    <a href="#" class="subheader"><%= config.description || theme.description %></a>
+  </li>
+  <li><div class="divider"></div></li>
+  <% Object.keys(theme.menu).forEach(function(key) { %>
+    <li><a class="waves-effect" href="<%= theme.menu[key] %>"><%= _p(key) %></a></li>
+  <% }); %>
+</ul>

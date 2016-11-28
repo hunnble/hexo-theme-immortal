@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col s12 m12 l12">
+    <ul class="pagination card-panel center-align">
+
+      <% if (page.prev_link) { %>
+        <li class="waves-effect"><a href=<%= url_for(page.prev_link) %>><i class="material-icons">chevron_left</i></a></li>
+      <% } else if (page.prev) { %>
+        <% if (page.prev !== 1) { %>
+          <li class="waves-effect"><a href='/<%= name %>/<%= page.prev %>'><i class="material-icons">chevron_left</i></a></li>
+        <% } else { %>
+          <li class="waves-effect"><a href=<%= url_for(page.base) %>><i class="material-icons">chevron_left</i></a></li>
+        <% } %>
+      <% } %>
+
+      <% if (typeof page.current === 'number' && typeof page.total === 'number') { %>
+        <% for (var i = Math.max(0, page.current - (theme.prev_num || 3) - 1); i < page.current - 1; ++i) { %>
+          <% if (i !== 0) { %>
+            <li class="waves-effect"><a href='/<%= name %>/<%= i + 1 %>'><%= i + 1 %></a></li>
+          <% } else { %>
+            <li class="waves-effect"><a href=<%= url_for(page.base) %>><%= i + 1 %></a></li>
+          <% } %>
+        <% } %>
+        <li class="<%= theme.color %>"><a href="#" class="white-text"><%= page.current %></a></li>
+        <% for (var i = Math.min(page.current, page.total); i < Math.min(page.current + (theme.next_num || 3), page.total); ++i) { %>
+          <li class="waves-effect"><a href='/<%= name %>/<%= i + 1 %>'><%= i + 1 %></a></li>
+        <% } %>
+      <% } %>
+
+      <% if (page.next_link) { %>
+        <li class="waves-effect"><a href=<%= url_for(page.next_link) %>><i class="material-icons">chevron_right</i></a></li>
+      <% } else if (page.next) { %>
+        <li class="waves-effect"><a href='/<%= name %>/<%= page.next %>'><i class="material-icons">chevron_right</i></a></li>
+      <% } %>
+
+    </ul>
+  </div>
+</div>

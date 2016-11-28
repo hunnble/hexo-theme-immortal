@@ -1,0 +1,33 @@
+<% if (site.posts.length > 0) { %>
+  <div id="recent-posts" class="card-panel">
+    <% site.posts.sort('date', -1).skip((page.current - 1 || 0) * (config.per_page || theme.per_page)).limit(config.per_page || theme.per_page).each(function(post) { %>
+      <div class="section recent-post-item">
+        <span class="card-title grey-text text-darken-4">
+          <a href=<%= config.root + post.path %> class="flow-text <%= theme.color %>-text"><%=post.title%></a>
+          <% if (post.date) { %>
+            <time datetime="<%= post.date.toJSON() %>" class="<%= theme.subColor %>-text">
+              <%= date(post.date, theme.date_format || config.date_format) %>
+            </time>
+          <% } %>
+          <% post.categories.each(function (category) { %>
+            <span class="new badge" data-badge-caption=""><%= category %></span>
+          <% }); %>
+        </span>
+        <div class="divider"></div>
+        <div class="card-content">
+          <div class="section">
+            <%- post.excerpt %>
+          </div>
+        </div>
+        <div class="card-action section">
+          <% post.tags.each(function (tag, index) { %>
+            <span class="new badge <%= theme.tagColors[index % post.tags.length] %>" data-badge-caption=""><a class="white-text" href=<%= url_for(tag.path) %>><%= tag.name %></a></span>
+          <% }); %>
+        </div>
+      </div>
+    <% }); %>
+  </div>
+  <%- partial('partials/pagination', {
+    'name': 'page'
+  }) %>
+<% } %>

@@ -1,0 +1,98 @@
+# main menu navigation
+menu:
+  home_title: /
+  archive_title: /archive
+  about_title: /about
+
+# links to other websites
+links:
+  github:
+    href: https://github.com/hunnble
+    icon: /images/github.png
+    color: black
+  weibo:
+    href: http://www.weibo.com/5597091497/profile?topnav=1&wvr=6
+    icon: /images/weibo.png
+    color: red
+  zhihu:
+    href: https://www.zhihu.com/people/han-te-79
+    icon: /images/zhihu.png
+    color: blue
+  douban:
+    href: https://book.douban.com/
+    icon: /images/douban.png
+    color: green
+  mail:
+    href: mailto:hante_hunter@163.com
+    icon: /images/mail.png
+    color: teal
+  twitter:
+    href: https://twitter.com/
+    icon: /images/twitter.png
+    color: blue
+  facebook:
+    href: https://www.facebook.com
+    icon: /images/facebook.png
+    color: indigo lighten-1
+  google:
+    href: www.google.com
+    icon: /images/google.png
+    color: green
+  stackoverflow:
+    href: https://stackoverflow.com/
+    icon: /images/stackoverflow.png
+    color: orange lighten-3
+
+
+# rss
+rss: /atom.xml
+
+# friends
+friends: false
+
+# Miscelaneous
+favicon: /images/favicon.ico
+
+# background
+background: /images/background.jpg
+
+# sidebar background
+sidebar_background: /images/head.jpg
+
+# avatar
+avatar: /images/avatar.png
+
+# stylesheets loaded in the <head>
+stylesheets:
+- https://fonts.googleapis.com/icon?family=Material+Icons
+- /css/materialize.min.css
+- /css/main.css
+
+# scripts loaded in the end of the body
+scripts:
+- https://code.jquery.com/jquery-2.1.1.min.js
+- /js/materialize.min.js
+- /js/main.js
+
+# pagination numbers
+prev_num: 1
+next_num: 1
+
+# Date / Time format
+date_format: MMM, YYYY
+time_format: Do Ah:m:ss
+
+# translucent
+translucent: false
+
+# color and subColor
+color: blue
+subColor: red
+
+# tag colors
+tagColors:
+  - blue
+  - amber
+  - green
+  - red
+  - yellow

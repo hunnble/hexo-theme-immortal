@@ -1,0 +1,44 @@
+<% if (!is_year()) { %>
+  <div id="archive" class="row">
+
+    <div class="col s12 m12 l12">
+      <% if (site.posts.length > 0) { %>
+        <%
+          var firstPost = site.posts.sort('date', -1).first(),
+            year = firstPost.date.year(),
+            month = firstPost.date.month();
+        %>
+      <% } %>
+      <ul class="collapsible popout" data-collapsible="accordion">
+        <li class="active">
+          <div class="collapsible-header active"><i class="material-icons">loyalty</i><%= date(firstPost.date, theme.date_format || config.date_format) %></div>
+          <div class="collapsible-body">
+            <p class="white">
+              <% site.posts.sort('date', -1).each(function (post) { %>
+                <% if (month !== post.date.month() || year !== post.date.year()) { %>
+                  <% month = post.date.month(); year = post.date.year() %>
+                  </p>
+                  </div>
+                  </li>
+                  <li>
+                    <div class="collapsible-header"><i class="material-icons">loyalty</i><%= date(post.date, theme.date_format || config.date_format) %></div>
+                    <div class="collapsible-body"><p class="white">
+                <% } %>
+                  <a href=<%= config.root + post.path %> class="<%= theme.color %>-text">
+                    <%= post.title %>
+                  </a>
+                  <time datetime="<%= post.date.toJSON() %>" class="<%= theme.subColor %>-text right valign-wrapper">
+                    <i class="material-icons valign">query_builder</i>
+                    <%= date(post.date, theme.time_format || config.time_format) %>
+                  </time>
+                  <br />
+              <% }); %>
+            </p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+<% } %>

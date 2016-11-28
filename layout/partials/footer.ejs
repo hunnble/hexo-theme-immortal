@@ -1,0 +1,42 @@
+<footer class="page-footer <%= theme.color %>">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <p class="grey-text text-lighten-4">
+          Site by <%= config.author || theme.author %> using
+        </p>
+      </div>
+      <div class="col l4 offset-l2 s12">
+        <h5 class="white-text">Links</h5>
+        <ul>
+          <li><a class="grey-text text-lighten-3" href=<%= config.root %>>Home</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+        </ul>
+      </div>
+      <div class="fixed-action-btn">
+        <a class="btn-floating <%= theme.color %>">
+          <i class="large material-icons">settings</i>
+        </a>
+        <ul>
+          <% Object.keys(theme.links).forEach(function(key, index) { %>
+            <% if (theme.links[key].href && theme.links[key].icon) { %>
+              <li>
+                <a class="btn-floating <%= theme.links[key].color || theme.color %> text-white waves-effect %>" href="<%= theme.links[key].href %>">
+                  <img class="link-img" src=<%= theme.links[key].icon %> alt=<%= key %>>
+                </a>
+              </li>
+            <% } %>
+          <% }); %>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container">
+    © 2016 <%= config.author || theme.author %>
+    <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+    </div>
+  </div>
+</footer>
