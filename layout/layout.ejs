@@ -15,6 +15,21 @@ pageTitle += ' [ ' + config.title + ' ]';
   <meta charset="UTF-8">
   <link rel="alternate" href=<%= theme.rss %> type="application/atom+xml">
   <title><%=pageTitle%></title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <% if (theme.fonts !== undefined && theme.fonts.length > 0) { %>
+    <!-- fonts list from config.yml -->
+    <% theme.fonts.forEach(function(url) { %>
+      <link rel="application/font-woff2" href="<%=url%>">
+    <% }); %>
+  <% } %>
+  <% if (theme.highlight.enable) { %>
+    <% if (!theme.highlight.style || theme.highlight.style === 'default') { %>
+      <link rel="stylesheet" href='/css/default_highlight.min.css'>
+    <% } else { %>
+      <link rel="stylesheet" href="//cdn.bootcss.com/highlight.js/9.8.0/styles/<%= theme.highlight.style %>.min.css">
+    <% } %>
+  <% } %>
   <% if (theme.stylesheets !== undefined && theme.stylesheets.length > 0) { %>
     <!-- stylesheets list from config.yml -->
     <% theme.stylesheets.forEach(function(url) { %>
@@ -27,7 +42,12 @@ pageTitle += ' [ ' + config.title + ' ]';
 <%- partial('partials/header') %>
 <%- partial('partials/sideNav') %>
 
-<div class="background-wrapper">
+<% if (theme.background_blur) { %>
+  <% var blurClass = ['sm', 'md', 'bg']; %>
+  <div class="background-wrapper blur-<%= blurClass[theme.background_blur - 1] %>">
+<% } else { %>
+  <div class="background-wrapper">
+<% } %>
   <img src=<%= theme.background %> alt="" class="background" />
 </div>
 
@@ -37,16 +57,20 @@ pageTitle += ' [ ' + config.title + ' ]';
   <div class="container" id="container">
 <% } %>
 
-  <div id="content-outer">
-    <div id="content-inner">
-      <%- body %>
-    </div>
-  </div>
+  <% if (page.layout === 'about') { %>
+    <%- partial('about.ejs') %>
+  <% } else { %>
+    <%- body %>
+  <% } %>
 
   <%- partial('partials/footer') %>
+  <%- partial('partials/links') %>
 
 </div>
 
+<% if (theme.highlight.enable) { %>
+  <script src="/js/highlight.min.js"></script>
+<% } %>
 <% if (theme.scripts !== undefined && theme.scripts.length > 0) { %>
   <!-- scripts list from theme config.yml -->
   <% theme.scripts.forEach(function(url) { %>

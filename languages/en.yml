@@ -4,3 +4,5 @@ category_title: Category
 about_title: About
 tag_title: Tag
 search_hint: Search
+date_hint: created at
+update_hint: updated at

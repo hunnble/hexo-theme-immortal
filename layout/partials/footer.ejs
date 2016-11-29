@@ -15,22 +15,6 @@
           <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
         </ul>
       </div>
-      <div class="fixed-action-btn">
-        <a class="btn-floating <%= theme.color %>">
-          <i class="large material-icons">settings</i>
-        </a>
-        <ul>
-          <% Object.keys(theme.links).forEach(function(key, index) { %>
-            <% if (theme.links[key].href && theme.links[key].icon) { %>
-              <li>
-                <a class="btn-floating <%= theme.links[key].color || theme.color %> text-white waves-effect %>" href="<%= theme.links[key].href %>">
-                  <img class="link-img" src=<%= theme.links[key].icon %> alt=<%= key %>>
-                </a>
-              </li>
-            <% } %>
-          <% }); %>
-        </ul>
-      </div>
     </div>
   </div>
   <div class="footer-copyright">

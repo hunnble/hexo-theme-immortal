@@ -62,17 +62,25 @@ sidebar_background: /images/head.jpg
 # avatar
 avatar: /images/avatar.png
 
+# fonts loaded in the <head>
+fonts:
+- /fonts/material-icons/2fcrYFNaTjcS6g4U3t-Y5UEw0lE80llgEseQY3FEmqw.woff2
+
 # stylesheets loaded in the <head>
 stylesheets:
-- https://fonts.googleapis.com/icon?family=Material+Icons
 - /css/materialize.min.css
 - /css/main.css
 
 # scripts loaded in the end of the body
 scripts:
-- https://code.jquery.com/jquery-2.1.1.min.js
+- /js/jquery-2.1.1.min.js
 - /js/materialize.min.js
 - /js/main.js
+
+# highlight code block
+highlight:
+  enable: true
+  style: default
 
 # pagination numbers
 prev_num: 1
@@ -84,6 +92,9 @@ time_format: Do Ah:m:ss
 
 # translucent
 translucent: false
+
+# blur style for background, can be set in 1, 2, 3 or false
+background_blur: 0
 
 # color and subColor
 color: blue

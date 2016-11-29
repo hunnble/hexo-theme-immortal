@@ -1,7 +1,29 @@
 @import 'reset';
+@import 'highlight';
 
 // $sideNavWidth: 300px;
 $zIndex1: -100;
+
+@mixin blur($value) {
+  -webkit-filter: blur(#{$value}px); /* Chrome, Opera */
+     -moz-filter: blur(#{$value}px);
+      -ms-filter: blur(#{$value}px);
+          filter: blur(#{$value}px);
+}
+
+$i: 1;
+@each $key in sm, md, bg {
+  .blur-#{$key} {
+    @include blur($i*5);
+  }
+  $i: $i + 1;
+}
+
+@for $i from 1 through 6 {
+  h#{$i} {
+    font-size: (6-$i)*0.25 + 0.75rem;
+  }
+}
 
 .background-wrapper {
   position: fixed;

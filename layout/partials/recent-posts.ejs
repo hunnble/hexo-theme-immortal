@@ -9,9 +9,15 @@
               <%= date(post.date, theme.date_format || config.date_format) %>
             </time>
           <% } %>
-          <% post.categories.each(function (category) { %>
-            <span class="new badge" data-badge-caption=""><%= category %></span>
-          <% }); %>
+          <% if (post.categories && post.categories.length > 0) { %>
+            <% Object.keys(post.categories).forEach(function (key, i) { %>
+              <span class="new badge" data-badge-caption="">
+                <% for (var key in post.categories) { %>
+                  <%= key %>
+                <% } %>
+              </span>
+            <% }); %>
+          <% } %>
         </span>
         <div class="divider"></div>
         <div class="card-content">
