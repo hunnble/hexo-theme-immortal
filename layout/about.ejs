@@ -1,20 +1,8 @@
-<section class="card">
+<section class="card about">
   <header class="section center-align <%= theme.color %> white-text">
-    <img class="circle" src=<%= config.avatar || theme.avatar %>>
-    <div class="subheader"><%= config.description || theme.description %></div>
-    <div class="center-align">
-      <ul class="row">
-        <% Object.keys(theme.links).forEach(function(key, index) { %>
-          <% if (theme.links[key].href && theme.links[key].icon) { %>
-            <li class="col s1">
-              <a class="btn-floating <%= theme.links[key].color || theme.color %> waves-effect %>" href="<%= theme.links[key].href %>">
-                <img class="link-img" src=<%= theme.links[key].icon %> alt=<%= key %>>
-              </a>
-            </li>
-          <% } %>
-        <% }); %>
-      </ul>
-    </div>
+    <img class="circle avatar-bg" src=<%= config.avatar || theme.avatar %>>
+    <h3><%= config.author || theme.author %></h3>
+    <div class="subheader section container left-align"><%= config.description || theme.description %></div>
   </header>
   <div class="card-content">
     <%- page.content %>

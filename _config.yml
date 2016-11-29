@@ -97,7 +97,7 @@ translucent: false
 background_blur: 0
 
 # color and subColor
-color: blue
+color: teal
 subColor: red
 
 # tag colors

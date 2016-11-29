@@ -4,6 +4,7 @@ $(document).ready(function() {
   $('#side-nav-switcher').sideNav();
 
   highlight();
+  post();
 
 });
 
@@ -24,3 +25,18 @@ function highlight() {
     }
   });
 }
+
+function post() {
+  $('.toc').pushpin({ offset: $('.toc').offset().top });
+
+  var hash = window.location.hash;
+  var pathList = $('.toc li a');
+  for (var i = 0, l = pathList.length; i < l; i++) {
+    var tempa = pathList.eq(i);
+    $(tempa.attr('href')).scrollSpy();
+
+    if (tempa.attr('href') === hash) {
+      tempa.parent().addClass('active');
+    }
+  }
+};

@@ -34,6 +34,6 @@
     <% }); %>
   </div>
   <%- partial('partials/pagination', {
-    'name': 'page'
+    'name': config.pagination_dir || 'page'
   }) %>
 <% } %>

@@ -1,11 +1,12 @@
 @import 'reset';
 @import 'highlight';
+@import 'about';
 
 // $sideNavWidth: 300px;
 $zIndex1: -100;
 
 @mixin blur($value) {
-  -webkit-filter: blur(#{$value}px); /* Chrome, Opera */
+  -webkit-filter: blur(#{$value}px);
      -moz-filter: blur(#{$value}px);
       -ms-filter: blur(#{$value}px);
           filter: blur(#{$value}px);
@@ -15,6 +16,10 @@ $i: 1;
 @each $key in sm, md, bg {
   .blur-#{$key} {
     @include blur($i*5);
+  }
+  .avatar-#{$key} {
+    width: #{$i*40}px;
+    height: #{$i*40}px;
   }
   $i: $i + 1;
 }

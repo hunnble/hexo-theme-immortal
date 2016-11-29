@@ -51,22 +51,41 @@ pageTitle += ' [ ' + config.title + ' ]';
   <img src=<%= theme.background %> alt="" class="background" />
 </div>
 
-<% if (theme.translucent) { %>
-  <div class="container half-opacity" id="container">
-<% } else { %>
-  <div class="container" id="container">
-<% } %>
+<div class="row">
 
-  <% if (page.layout === 'about') { %>
-    <%- partial('about.ejs') %>
+  <% if (theme.translucent) { %>
+    <div class="col m8 s12 push-m1 half-opacity" id="container">
   <% } else { %>
-    <%- body %>
+    <div class="col m8 s12 push-m1" id="container">
   <% } %>
 
-  <%- partial('partials/footer') %>
-  <%- partial('partials/links') %>
+    <% if (page.layout === 'about') { %>
+      <%- partial('about.ejs') %>
+    <% } else { %>
+      <%- body %>
+    <% } %>
+
+  </div>
+
+  <aside class="col m2 hide-on-med-and-down">
+
+    <% if (is_post()) { %>
+
+      <div class="toc">
+        <%- toc(page.content, {
+          'class': 'table-of-contents card-panel',
+          'list_number': false
+        }) %>
+      </div>
+
+    <% } %>
+
+  </aside>
 
 </div>
+
+<%- partial('partials/footer') %>
+<%- partial('partials/links') %>
 
 <% if (theme.highlight.enable) { %>
   <script src="/js/highlight.min.js"></script>
