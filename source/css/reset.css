@@ -1,6 +1,6 @@
 @charset "UTF-8";
 body, div, dl, dt, dd, ul, ol, li, pre,
-form, fieldset, input, textarea, p, blockquote, th, td {
+form, fieldset, input, textarea, p, th, td {
   padding: 0;
   margin: 0; }
 
@@ -11,12 +11,16 @@ table {
 fieldset, img {
   border: 0; }
 
-address, caption, cite, code, dfn, em, strong, th, var {
+address, caption, cite, dfn, th, var {
   font-weight: normal;
   font-style: normal; }
 
-ol, ul {
-  list-style: none; }
+code.hljs {
+  display: inline-block;
+  margin: 0 0.1rem;
+  padding: 0.1rem 0.25rem;
+  border-radius: 3px;
+  vertical-align: middle; }
 
 caption, th {
   text-align: left; }
@@ -36,6 +40,9 @@ time {
 a {
   text-decoration: none;
   cursor: pointer; }
+
+blockquote {
+  border-left: 5px solid #909099; }
 
 /* fallback */
 @font-face {

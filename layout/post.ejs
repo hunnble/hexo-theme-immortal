@@ -1,21 +1,37 @@
 
-<article id="post" class="card-panel">
-  <h3 class="text-flow"><%- page.title %></h3>
-  <div class="row">
-    <div class="col s12">
-      <div class="valign-wrapper <%= theme.subColor %>-text">
-        <i class="material-icons valign">query_builder</i>
-        <time datetime="<%= page.date.toJSON() %>" class="valign">
-          <%= date(page.date, theme.date_format || config.date_format) %>
-          <%= date(page.date, theme.time_format || config.time_format) %>
-        </time>
+<article id="post" class="card">
+  <div class="card-panel <%= theme.color %> <%= theme.titleColor %>-text">
+    <div class="row">
+      <div class="col s12 m9">
+        <h3><%- page.title %></h3>
+        <div class="valign-wrapper <%= theme.titleColor %>-text">
+          <i class="material-icons valign">query_builder</i>
+          <time datetime="<%= page.date.toJSON() %>" class="valign">
+            <%= date(page.date, theme.date_format || config.date_format) %>
+            <%= date(page.date, theme.time_format || config.time_format) %>
+          </time>
+        </div>
+        <div class="section">
+          <% page.tags.each(function (tag, index) { %>
+            <span class="new badge <%= theme.tagColors[index % page.tags.length] %> left" data-badge-caption=""><a class="<%= theme.titleColor %>-text" href=<%= url_for(tag.path) %>><%= tag.name %></a></span>
+          <% }); %>
+        </div>
       </div>
-      <div class="section">
-        <% page.tags.each(function (tag, index) { %>
-          <span class="new badge <%= theme.tagColors[index % page.tags.length] %> left" data-badge-caption=""><a class="white-text" href=<%= url_for(tag.path) %>><%= tag.name %></a></span>
-        <% }); %>
-      </div>
+
+      <% if (is_post()) { %>
+        <div class="col m2 push-m2">
+          <div class="toc">
+            <%- toc(page.content, {
+              'class': 'table-of-contents card-panel',
+              'list_number': false
+            }) %>
+          </div>
+        </div>
+      <% } %>
     </div>
   </div>
-  <%- page.content %>
+
+  <div class="card-content article">
+    <%- page.content %>
+  </div>
 </article>

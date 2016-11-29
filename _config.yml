@@ -35,7 +35,7 @@ links:
     icon: /images/facebook.png
     color: indigo lighten-1
   google:
-    href: www.google.com
+    href: http://www.google.com
     icon: /images/google.png
     color: green
   stackoverflow:
@@ -43,12 +43,22 @@ links:
     icon: /images/stackoverflow.png
     color: orange lighten-3
 
-
 # rss
 rss: /atom.xml
 
 # friends
-friends: false
+# friends: false
+friends:
+  hunnble: http://www.hunnble.com
+
+#widgits
+widgits:
+  - search
+  - category
+  - tag
+  - recent_posts
+  - recent_comments
+  - links
 
 # Miscelaneous
 favicon: /images/favicon.ico
@@ -77,10 +87,10 @@ scripts:
 - /js/materialize.min.js
 - /js/main.js
 
-# highlight code block
+# highlight code block, make sure that _config.yml in root dir be false
 highlight:
   enable: true
-  style: default
+  style: github
 
 # pagination numbers
 prev_num: 1
@@ -99,6 +109,7 @@ background_blur: 0
 # color and subColor
 color: teal
 subColor: red
+titleColor: white
 
 # tag colors
 tagColors:

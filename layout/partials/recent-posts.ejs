@@ -27,7 +27,7 @@
         </div>
         <div class="card-action section">
           <% post.tags.each(function (tag, index) { %>
-            <span class="new badge <%= theme.tagColors[index % post.tags.length] %>" data-badge-caption=""><a class="white-text" href=<%= url_for(tag.path) %>><%= tag.name %></a></span>
+            <span class="new badge <%= theme.tagColors[index % post.tags.length] %>" data-badge-caption=""><a class="<%= theme.titleColor %>-text" href=<%= url_for(tag.path) %>><%= tag.name %></a></span>
           <% }); %>
         </div>
       </div>

@@ -1,10 +1,12 @@
 <section class="card about">
-  <header class="section center-align <%= theme.color %> white-text">
+  <header class="section center-align <%= theme.color %> <%= theme.titleColor %>-text">
     <img class="circle avatar-bg" src=<%= config.avatar || theme.avatar %>>
     <h3><%= config.author || theme.author %></h3>
     <div class="subheader section container left-align"><%= config.description || theme.description %></div>
   </header>
   <div class="card-content">
-    <%- page.content %>
+    <article class="container article">
+      <%- page.content %>
+    </article>
   </div>
 </section>

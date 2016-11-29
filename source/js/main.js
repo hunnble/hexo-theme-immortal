@@ -3,10 +3,16 @@ $(document).ready(function() {
   $('.collapsible').collapsible();
   $('#side-nav-switcher').sideNav();
 
+  article();
+  links();
   highlight();
   post();
 
 });
+
+function links() {
+  $('.fixed-action-btn').openFAB();
+}
 
 function highlight() {
   if (!hljs) {
@@ -24,9 +30,15 @@ function highlight() {
       $numbering.append($('<li/>').text(i));
     }
   });
+  $('code').each(function(i, inline) {
+    hljs.highlightBlock(inline);
+  });
 }
 
 function post() {
+  if (!$('.toc').offset()) {
+    return false;
+  }
   $('.toc').pushpin({ offset: $('.toc').offset().top });
 
   var hash = window.location.hash;
@@ -39,4 +51,10 @@ function post() {
       tempa.parent().addClass('active');
     }
   }
-};
+}
+
+function article() {
+  var article = $('.article');
+  article.find('ul').addClass('collection');
+  article.find('li').addClass('collection-item');
+}

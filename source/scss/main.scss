@@ -4,6 +4,7 @@
 
 // $sideNavWidth: 300px;
 $zIndex1: -100;
+$zIndex2: 1;
 
 @mixin blur($value) {
   -webkit-filter: blur(#{$value}px);
@@ -45,11 +46,19 @@ $i: 1;
 .half-opacity {
   opacity: 0.85;
 }
-
 .link-img {
   width: 1rem;
   height: 1rem;
   margin-top: 0.75rem;
+}
+.pinned {
+  z-index: $zIndex2;
+}
+.article {
+  line-height: 1.8rem;
+  * {
+    max-width: 100%;
+  }
 }
 
 @media only screen and (max-width : 992px) {

@@ -8,12 +8,13 @@
       </div>
       <div class="col l4 offset-l2 s12">
         <h5 class="white-text">Links</h5>
-        <ul>
-          <li><a class="grey-text text-lighten-3" href=<%= config.root %>>Home</a></li>
-          <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-          <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-          <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-        </ul>
+        <% if (theme.friends) { %>
+          <ul>
+            <% Object.keys(theme.friends).forEach(function (key) { %>
+              <li><a class="<%= theme.titleColor %>-text" href=<%= theme.friends[key] %>><%= key %></a></li>
+            <% }); %>
+          </ul>
+        <% } %>
       </div>
     </div>
   </div>

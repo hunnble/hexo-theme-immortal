@@ -54,38 +54,35 @@ pageTitle += ' [ ' + config.title + ' ]';
 <div class="row">
 
   <% if (theme.translucent) { %>
-    <div class="col m8 s12 push-m1 half-opacity" id="container">
+    <% var translucent = 'half-opacity' %>
   <% } else { %>
-    <div class="col m8 s12 push-m1" id="container">
+    <% var translucent = '' %>
   <% } %>
 
+  <% if (page.layout === 'about') { %>
+    <% var offsetx = 'push-m2' %>
+  <% } else { %>
+    <% var offsetx = 'push-m1' %>
+  <% } %>
+
+  <div class="col m8 s12 <%= offsetx %> <%= translucent %>" id="container">
     <% if (page.layout === 'about') { %>
       <%- partial('about.ejs') %>
     <% } else { %>
       <%- body %>
+      <%- partial('partials/links') %>
     <% } %>
-
   </div>
 
-  <aside class="col m2 hide-on-med-and-down">
+  <aside class="col m2 push-m1 hide-on-med-and-down">
 
-    <% if (is_post()) { %>
 
-      <div class="toc">
-        <%- toc(page.content, {
-          'class': 'table-of-contents card-panel',
-          'list_number': false
-        }) %>
-      </div>
-
-    <% } %>
 
   </aside>
 
 </div>
 
 <%- partial('partials/footer') %>
-<%- partial('partials/links') %>
 
 <% if (theme.highlight.enable) { %>
   <script src="/js/highlight.min.js"></script>
