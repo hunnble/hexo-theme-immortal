@@ -1,12 +1,14 @@
+<h1 class="<%= theme.titleColor %>-text"><%= config.title || theme.title %></h1>
 <% if (site.posts.length > 0) { %>
   <div id="recent-posts" class="card-panel z-depth-0">
     <% site.posts.sort('date', -1).skip((page.current - 1 || 0) * (config.per_page || theme.per_page)).limit(config.per_page || theme.per_page).each(function(post) { %>
       <div class="section recent-post-item">
-        <span class="card-title grey-text text-darken-4">
-          <a href=<%= config.root + post.path %> class="flow-text <%= theme.color %>-text"><%=post.title%></a>
+        <span class="card-title">
+          <a href=<%= config.root + post.path %> class="flow-text <%= theme.color || teal %>-text"><%=post.title%></a>
           <% if (post.date) { %>
             <time datetime="<%= post.date.toJSON() %>" class="<%= theme.subColor %>-text">
               <%= date(post.date, theme.date_format || config.date_format) %>
+              <%= date(post.date, theme.time_format || config.time_format) %>
             </time>
           <% } %>
           <% if (post.categories && post.categories.length > 0) { %>
@@ -26,6 +28,10 @@
           </div>
         </div>
         <div class="card-action section">
+          <span class="new badge <%= theme.color %> left" data-badge-caption="">
+            <a href=<%= config.root + post.path %> class="<%= theme.titleColor || white %>-text"><%= _p('more') %></a>
+          </span>
+
           <% post.tags.each(function (tag, index) { %>
             <span class="new badge <%= theme.tagColors[index % post.tags.length] %>" data-badge-caption=""><a class="<%= theme.titleColor %>-text" href=<%= url_for(tag.path) %>><%= tag.name %></a></span>
           <% }); %>

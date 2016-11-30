@@ -1,7 +1,6 @@
 <div class="navbar-fixed">
   <nav class="transparent z-depth-0">
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo <%= theme.titleColor %>-text">&nbsp;<%= config.title || theme.title %></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <% Object.keys(theme.menu).forEach(function(key, index) { %>
           <li>
@@ -9,7 +8,7 @@
           </li>
         <% }); %>
       </ul>
-      <a href="#" data-activates="slide-nav" class="button-collapse" id="side-nav-switcher"><i class="material-icons">menu</i></a>
+      <a href="#" data-activates="slide-nav" class="button-collapse show-on-large" id="side-nav-switcher"><i class="material-icons">menu</i></a>
     </div>
   </nav>
   <!-- <div class="fixed-action-btn navFloatingBtn click-to-toggle">

@@ -18,7 +18,7 @@ address, caption, cite, dfn, th, var {
 code.hljs {
   display: inline-block;
   margin: 0 0.1rem;
-  padding: 0.1rem 0.25rem;
+  padding: 0.05rem 0.25rem;
   border-radius: 3px;
   vertical-align: middle; }
 
@@ -193,13 +193,11 @@ h6 {
 
 #container-outer {
   margin-bottom: 0; }
-  #container-outer #post {
-    margin-bottom: 0; }
-  #container-outer #recent-posts {
+  #container-outer #container-inner > .card, #container-outer #container-inner > .card-panel {
     margin-bottom: 0; }
 
 .pagination {
   margin: 0; }
 
-.toc .toc-border {
-  height: .4rem; }
+.description {
+  text-indent: 2rem; }

@@ -1,4 +1,3 @@
-
 <%
 var pageTitle = page.title || config.subtitle || '';
 if (is_archive()) pageTitle = 'Archives';
@@ -14,7 +13,7 @@ pageTitle += ' [ ' + config.title + ' ]';
 <head>
   <meta charset="UTF-8">
   <link rel="alternate" href=<%= theme.rss %> type="application/atom+xml">
-  <title><%=pageTitle%></title>
+  <title><%= pageTitle %></title>
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <% if (theme.fonts !== undefined && theme.fonts.length > 0) { %>
@@ -70,13 +69,7 @@ pageTitle += ' [ ' + config.title + ' ]';
 
   <aside class="col m2 push-m1 hide-on-med-and-down">
 
-    <div class="userView card-panel">
-      <img class="circle" src=<%= config.avatar || theme.avatar %>>
-      <h4 class="<%= theme.color %>-text"><%= config.title || theme.title %></h4>
-      <span class="<%= theme.color %>-text subheader"><%= config.author || theme.author %></span>
-    </div>
-
-    <% if (theme.widgits) { %>
+    <!-- <% if (theme.widgits) { %>
       <div class="card-panel <%= theme.color %>-text">
         <% if (theme.widgits.category && site.categories.length) { %>
           <%- list_categories({
@@ -89,7 +82,7 @@ pageTitle += ' [ ' + config.title + ' ]';
           <%- list_tags({}) %>
         <% } %>
       </div>
-    <% } %>
+    <% } %> -->
 
   </aside>
 

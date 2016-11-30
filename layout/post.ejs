@@ -3,7 +3,7 @@
   <div class="card-panel <%= theme.color %> <%= theme.titleColor %>-text">
     <div class="row">
       <div class="col m12 l9">
-        <h3><%- page.title %></h3>
+        <h3><%- page.title || '' %></h3>
         <div class="valign-wrapper <%= theme.titleColor %>-text || white-text">
           <i class="material-icons valign">query_builder</i>
           <time datetime="<%= page.date.toJSON() %>" class="valign">
@@ -11,11 +11,13 @@
             <%= date(page.date, theme.time_format || config.time_format) %>
           </time>
         </div>
-        <div class="section">
-          <% page.tags.each(function (tag, index) { %>
-            <span class="new badge <%= theme.tagColors[index % page.tags.length] %> left" data-badge-caption=""><a class="<%= theme.titleColor %>-text" href=<%= url_for(tag.path) %>><%= tag.name %></a></span>
-          <% }); %>
-        </div>
+        <% if (page.tags) { %>
+          <div class="section">
+            <% page.tags.each(function (tag, index) { %>
+              <span class="new badge <%= theme.tagColors[index % page.tags.length] %> left" data-badge-caption=""><a class="<%= theme.titleColor %>-text" href=<%= url_for(tag.path) %>><%= tag.name %></a></span>
+            <% }); %>
+          </div>
+        <% } %>
       </div>
 
       <% if (is_post()) { %>
@@ -34,4 +36,16 @@
   <div class="card-content article">
     <%- page.content %>
   </div>
+  <% Object.keys(page).forEach(function (key) { %>
+    <div class="card-panel">
+      <%= key %>
+      <br />
+    </div>
+  <% }); %>
+  <% if (page.prev) { %>
+    <a href=<% page.prev %>>prev</a>
+  <% } %>
+  <% if (page.next) { %>
+    <a href=<% page.next %>><% page.next %></a>
+  <% } %>
 </article>

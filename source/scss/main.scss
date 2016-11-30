@@ -69,21 +69,15 @@ $i: 1;
 }
 #container-outer {
   margin-bottom: 0;
-  #post {
-    margin-bottom: 0;
-  }
-  #recent-posts {
+  #container-inner>.card, #container-inner>.card-panel {
     margin-bottom: 0;
   }
 }
 .pagination {
   margin: 0;
 }
-
-.toc {
-  .toc-border {
-    height: .4rem;
-  }
+.description {
+  text-indent: 2rem;
 }
 
 @media only screen and (max-width : 992px) {

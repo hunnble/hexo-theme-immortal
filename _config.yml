@@ -104,8 +104,8 @@ translucent: true
 background_blur: 1
 
 # color and subColor
-color: blue
-subColor: red
+color: darken-4 deep-purple
+subColor: deep-purple
 titleColor: white
 
 # tag colors
