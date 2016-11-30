@@ -39,7 +39,8 @@ time {
 
 a {
   text-decoration: none;
-  cursor: pointer; }
+  cursor: pointer;
+  color: inherit; }
 
 blockquote {
   border-left: 5px solid #909099; }
@@ -65,3 +66,12 @@ blockquote {
   direction: ltr;
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased; }
+
+.row .col {
+  padding: 0; }
+
+.card, .card-panel {
+  border-radius: 0; }
+
+footer.page-footer {
+  margin-top: 0; }

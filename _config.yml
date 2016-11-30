@@ -53,21 +53,18 @@ friends:
 
 #widgits
 widgits:
-  - search
-  - category
-  - tag
-  - recent_posts
-  - recent_comments
-  - links
+  search: true
+  category: true
+  tag: true
+  recent_posts: true
+  recent_comments: true
+  links: true
 
 # Miscelaneous
 favicon: /images/favicon.ico
 
 # background
 background: /images/background.jpg
-
-# sidebar background
-sidebar_background: /images/head.jpg
 
 # avatar
 avatar: /images/avatar.png
@@ -90,7 +87,7 @@ scripts:
 # highlight code block, make sure that _config.yml in root dir be false
 highlight:
   enable: true
-  style: github
+  style: default
 
 # pagination numbers
 prev_num: 1
@@ -101,13 +98,13 @@ date_format: MMM, YYYY
 time_format: Do Ah:m:ss
 
 # translucent
-translucent: false
+translucent: true
 
 # blur style for background, can be set in 1, 2, 3 or false
-background_blur: 0
+background_blur: 1
 
 # color and subColor
-color: teal
+color: blue
 subColor: red
 titleColor: white
 

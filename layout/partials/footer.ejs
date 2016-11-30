@@ -1,17 +1,26 @@
-<footer class="page-footer <%= theme.color %>">
-  <div class="container">
+<% if (theme.translucent) { %>
+  <% var translucent = 'half-opacity' %>
+<% } else { %>
+  <% var translucent = '' %>
+<% } %>
+
+<footer class="page-footer <%= theme.color || teal %> <%= translucent %> col m8 s12 push-m2">
+  <div class="container section">
     <div class="row">
       <div class="col l6 s12">
-        <p class="grey-text text-lighten-4">
+        <p class="<%= theme.titleColor || white %>-text text-lighten-4">
           Site by <%= config.author || theme.author %> using
         </p>
+        <div class="<%= theme.titleColor || white %>-text">
+          <%- tagcloud(site.tags, {}) %>
+        </div>
       </div>
       <div class="col l4 offset-l2 s12">
         <h5 class="white-text">Links</h5>
         <% if (theme.friends) { %>
           <ul>
             <% Object.keys(theme.friends).forEach(function (key) { %>
-              <li><a class="<%= theme.titleColor %>-text" href=<%= theme.friends[key] %>><%= key %></a></li>
+              <li><a class="<%= theme.titleColor || white %>-text" href=<%= theme.friends[key] %>><%= key %></a></li>
             <% }); %>
           </ul>
         <% } %>
@@ -21,7 +30,7 @@
   <div class="footer-copyright">
     <div class="container">
     © 2016 <%= config.author || theme.author %>
-    <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+    <a class="<%= theme.titleColor || white %>-text text-lighten-4 right" href="#!">More Links</a>
     </div>
   </div>
 </footer>

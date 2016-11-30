@@ -39,7 +39,8 @@ time {
 
 a {
   text-decoration: none;
-  cursor: pointer; }
+  cursor: pointer;
+  color: inherit; }
 
 blockquote {
   border-left: 5px solid #909099; }
@@ -66,13 +67,22 @@ blockquote {
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased; }
 
+.row .col {
+  padding: 0; }
+
+.card, .card-panel {
+  border-radius: 0; }
+
+footer.page-footer {
+  margin-top: 0; }
+
 code {
   overflow-x: auto;
   overflow-y: auto;
   word-break: keep-all;
   white-space: pre; }
   code.has-numbering {
-    margin-left: 1.5rem;
+    margin-left: 2rem;
     word-wrap: normal;
     word-break: keep-all;
     white-space: pre; }
@@ -84,14 +94,12 @@ pre {
   position: absolute;
   top: 0;
   left: 0;
-  width: 1.5rem;
+  width: 2rem;
   height: 100%;
-  padding: .5rem .3rem .5rem 0;
+  padding: .1rem .3rem .5rem 0;
   border-radius: 3px 0 0 3px;
-  background-color: #EEE;
   text-align: right;
   font-size: 1em;
-  color: #AAA;
   list-style: none; }
 
 .about .row {
@@ -176,3 +184,22 @@ h6 {
   line-height: 1.8rem; }
   .article * {
     max-width: 100%; }
+
+.navFloatingBtn {
+  top: 4rem;
+  bottom: auto;
+  padding: 0;
+  margin-top: -1.75rem; }
+
+#container-outer {
+  margin-bottom: 0; }
+  #container-outer #post {
+    margin-bottom: 0; }
+  #container-outer #recent-posts {
+    margin-bottom: 0; }
+
+.pagination {
+  margin: 0; }
+
+.toc .toc-border {
+  height: .4rem; }

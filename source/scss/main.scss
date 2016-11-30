@@ -2,9 +2,10 @@
 @import 'highlight';
 @import 'about';
 
-// $sideNavWidth: 300px;
 $zIndex1: -100;
 $zIndex2: 1;
+$navTop: 4rem;
+$floatingBtnHeight: 3.5rem;
 
 @mixin blur($value) {
   -webkit-filter: blur(#{$value}px);
@@ -58,6 +59,30 @@ $i: 1;
   line-height: 1.8rem;
   * {
     max-width: 100%;
+  }
+}
+.navFloatingBtn {
+  top: $navTop;
+  bottom: auto;
+  padding: 0;
+  margin-top: $floatingBtnHeight/-2;
+}
+#container-outer {
+  margin-bottom: 0;
+  #post {
+    margin-bottom: 0;
+  }
+  #recent-posts {
+    margin-bottom: 0;
+  }
+}
+.pagination {
+  margin: 0;
+}
+
+.toc {
+  .toc-border {
+    height: .4rem;
   }
 }
 

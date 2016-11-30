@@ -51,7 +51,7 @@ pageTitle += ' [ ' + config.title + ' ]';
   <img src=<%= theme.background %> alt="" class="background" />
 </div>
 
-<div class="row">
+<div class="row" id="container-outer">
 
   <% if (theme.translucent) { %>
     <% var translucent = 'half-opacity' %>
@@ -59,13 +59,7 @@ pageTitle += ' [ ' + config.title + ' ]';
     <% var translucent = '' %>
   <% } %>
 
-  <% if (page.layout === 'about') { %>
-    <% var offsetx = 'push-m2' %>
-  <% } else { %>
-    <% var offsetx = 'push-m1' %>
-  <% } %>
-
-  <div class="col m8 s12 <%= offsetx %> <%= translucent %>" id="container">
+  <div class="col m8 s12 push-m2 <%= translucent %>" id="container-inner">
     <% if (page.layout === 'about') { %>
       <%- partial('about.ejs') %>
     <% } else { %>
@@ -76,13 +70,32 @@ pageTitle += ' [ ' + config.title + ' ]';
 
   <aside class="col m2 push-m1 hide-on-med-and-down">
 
+    <div class="userView card-panel">
+      <img class="circle" src=<%= config.avatar || theme.avatar %>>
+      <h4 class="<%= theme.color %>-text"><%= config.title || theme.title %></h4>
+      <span class="<%= theme.color %>-text subheader"><%= config.author || theme.author %></span>
+    </div>
 
+    <% if (theme.widgits) { %>
+      <div class="card-panel <%= theme.color %>-text">
+        <% if (theme.widgits.category && site.categories.length) { %>
+          <%- list_categories({
+            'class': 'collection'
+          }) %>
+        <% } %>
+      </div>
+      <div class="card-panel <%= theme.color %>-text">
+        <% if (theme.widgits.tag && site.tags.length) { %>
+          <%- list_tags({}) %>
+        <% } %>
+      </div>
+    <% } %>
 
   </aside>
 
-</div>
+  <%- partial('partials/footer') %>
 
-<%- partial('partials/footer') %>
+</div>
 
 <% if (theme.highlight.enable) { %>
   <script src="/js/highlight.min.js"></script>

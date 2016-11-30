@@ -4,7 +4,7 @@ code {
   word-break: keep-all;
   white-space: pre;
   &.has-numbering {
-    margin-left: 1.5rem;
+    margin-left: 2rem;
     word-wrap: normal;
     word-break: keep-all;
     white-space: pre;
@@ -17,23 +17,13 @@ pre {
   position: absolute;
   top: 0;
   left: 0;
-  width: 1.5rem;
+  width: 2rem;
   height: 100%;
-  padding: .5rem .3rem .5rem 0;
+  padding: .1rem .3rem .5rem 0;
   border-radius: 3px 0 0 3px;
-  background-color: #EEE;
+  // background-color: #EEE;
   text-align: right;
   font-size: 1em;
-  color: #AAA;
+  // color: #AAA;
   list-style: none;
 }
-
-// @media (max-width: 767px) {
-//   .pre-numbering {
-//     display: none;
-//   }
-//   .has-numbering {
-//     word-wrap: break-world !important;
-//     white-space: pre-wrap !important;
-//   }
-// }
