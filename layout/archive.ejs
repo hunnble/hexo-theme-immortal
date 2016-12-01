@@ -24,14 +24,18 @@
                     <div class="collapsible-header"><i class="material-icons">loyalty</i><%= date(post.date, theme.date_format || config.date_format) %></div>
                     <div class="collapsible-body"><p class="white">
                 <% } %>
-                  <a href=<%= config.root + post.path %> class="<%= theme.color %>-text">
-                    <%= post.title %>
-                  </a>
-                  <time datetime="<%= post.date.toJSON() %>" class="<%= theme.subColor %>-text right valign-wrapper">
-                    <i class="material-icons valign">query_builder</i>
-                    <%= date(post.date, theme.time_format || config.time_format) %>
-                  </time>
-                  <br />
+                  <span class="row">
+                    <span class="col m8 s12">
+                      <%- link_to(config.root + post.path, post.title, {
+                        external: theme.external_link,
+                        class: theme.color + '-text'
+                      }) %>
+                    </span>
+                    <time datetime="<%= post.date.toJSON() %>" class="<%= theme.subColor %>-text right valign-wrapper m4 s12">
+                      <i class="material-icons valign">query_builder</i>
+                      <%= date(post.date, theme.time_format || config.time_format) %>
+                    </time>
+                  </span>
               <% }); %>
             </p>
           </div>

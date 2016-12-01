@@ -1,10 +1,27 @@
 
-<article id="post" class="card">
+<% if (page.categories && page.categories.length > 0) { %>
+  <div class="valign-wrapper">
+    <% var pathname = ''; %>
+    <% page.categories.each(function (category, i) { %>
+      <% pathname += '/' + category.name; %>
+      <!-- <span class="new badge category <%= theme.color %> <%= theme.titleColor %>-text valign" data-badge-caption=""> -->
+        <%- link_to(url_for(config.category_dir) + pathname, category.name, {
+          external: theme.external_link,
+          class: 'btn-flat waves-effect ' + theme.titleColor + '-text'
+        }) %>
+      <!-- </span> -->
+      <% if (i < page.categories.length - 1) { %>
+        <i class="tiny material-icons <%= theme.titleColor %>-text valign">chevron_right</i>
+      <% } %>
+    <% }); %>
+  </div>
+<% } %>
+<article id="post" class="card article">
   <div class="card-panel <%= theme.color %> <%= theme.titleColor %>-text">
     <div class="row">
       <div class="col m12 l9">
-        <h3><%- page.title || '' %></h3>
-        <div class="valign-wrapper <%= theme.titleColor %>-text || white-text">
+        <h3 class="inline-title"><%- page.title || '' %></h3>
+        <div class="valign-wrapper <%= theme.titleColor %>-text">
           <i class="material-icons valign">query_builder</i>
           <time datetime="<%= page.date.toJSON() %>" class="valign">
             <%= date(page.date, theme.date_format || config.date_format) %>
@@ -33,7 +50,7 @@
     </div>
   </div>
 
-  <div class="card-content article">
+  <div class="card-content">
     <%- page.content %>
   </div>
   <% Object.keys(page).forEach(function (key) { %>

@@ -4,8 +4,7 @@
       <div class="background">
       </div>
       <img class="circle" src=<%= config.avatar || theme.avatar %>>
-      <h3 class="<%= theme.titleColor %>-text"><%= config.author || theme.author %></h5>
-      <h5 class="<%= theme.titleColor %>-text subheader"><%= config.subtitle || theme.subtitle %></h5>
+      <h3 class="<%= theme.titleColor %>-text inline-title"><%= config.author || theme.author %></h5>
     </div>
   </li>
   <% Object.keys(theme.menu).forEach(function(key) { %>

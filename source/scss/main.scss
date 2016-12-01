@@ -55,8 +55,15 @@ $i: 1;
 .pinned {
   z-index: $zIndex2;
 }
+.inline-title {
+  display: inline-block;
+  margin: .5rem .5rem .5rem 0;
+}
 .article {
   line-height: 1.8rem;
+  .link {
+    text-decoration: underline;
+  }
   * {
     max-width: 100%;
   }
@@ -78,6 +85,13 @@ $i: 1;
 }
 .description {
   text-indent: 2rem;
+}
+.recent-post-item {
+  margin-bottom: 2rem;
+}
+.category {
+  float: none !important;
+  margin-left: 0 !important;
 }
 
 @media only screen and (max-width : 992px) {

@@ -1,39 +1,71 @@
-<h1 class="<%= theme.titleColor %>-text"><%= config.title || theme.title %></h1>
+<h1 class="<%= theme.titleColor %>-text inline-title"><%= config.title %></h1>
+<h6 class="<%= theme.titleColor %>-text inline-title"><%= config.subtitle %></h6>
 <% if (site.posts.length > 0) { %>
-  <div id="recent-posts" class="card-panel z-depth-0">
+  <div id="recent-posts" class="article card-panel z-depth-0">
     <% site.posts.sort('date', -1).skip((page.current - 1 || 0) * (config.per_page || theme.per_page)).limit(config.per_page || theme.per_page).each(function(post) { %>
       <div class="section recent-post-item">
         <span class="card-title">
-          <a href=<%= config.root + post.path %> class="flow-text <%= theme.color || teal %>-text"><%=post.title%></a>
+          <% if (post.link) { %>
+            <%- link_to(post.link, post.title, {
+              external: theme.external_link,
+              class: 'flow-text ' + theme.color + '-text inline-title'
+            }) %>
+          <% } else if (post.title) { %>
+            <%- link_to(config.root + post.path, post.title, {
+              external: theme.external_link,
+              class: 'flow-text ' + theme.color + '-text inline-title'
+            }) %>
+          <% } %>
+
           <% if (post.date) { %>
-            <time datetime="<%= post.date.toJSON() %>" class="<%= theme.subColor %>-text">
+            <time datetime="<%= post.date.toJSON() %>" class="<%= theme.subColor %>-text inline-title">
               <%= date(post.date, theme.date_format || config.date_format) %>
               <%= date(post.date, theme.time_format || config.time_format) %>
             </time>
           <% } %>
           <% if (post.categories && post.categories.length > 0) { %>
-            <% Object.keys(post.categories).forEach(function (key, i) { %>
-              <span class="new badge" data-badge-caption="">
-                <% for (var key in post.categories) { %>
-                  <%= key %>
+            <div class="valign-wrapper section">
+              <% var pathname = ''; %>
+              <% post.categories.each(function (category, i) { %>
+                <% pathname += '/' + category.name; %>
+                <span class="new badge category <%= theme.color %> valign" data-badge-caption="">
+                  <%- link_to(url_for(config.category_dir) + pathname, category.name, {
+                    external: theme.external_link
+                  }) %>
+                </span>
+                <% if (i < post.categories.length - 1) { %>
+                  <i class="tiny material-icons <%= theme.color %>-text valign">chevron_right</i>
                 <% } %>
-              </span>
-            <% }); %>
+              <% }); %>
+            </div>
           <% } %>
         </span>
         <div class="divider"></div>
         <div class="card-content">
           <div class="section">
-            <%- post.excerpt %>
+            <% if (post.excerpt) { %>
+              <%- post.excerpt %>
+            <% } else { %>
+              <%- post.content %>
+            <% } %>
           </div>
         </div>
         <div class="card-action section">
-          <span class="new badge <%= theme.color %> left" data-badge-caption="">
-            <a href=<%= config.root + post.path %> class="<%= theme.titleColor || white %>-text"><%= _p('more') %></a>
-          </span>
-
+          <% if (post.excerpt) { %>
+            <span class="new badge <%= theme.color %> left" data-badge-caption="">
+              <%- link_to(config.root + post.path, _p('more'), {
+                external: theme.external_link,
+                class: (theme.titleColor || white) + '-text'
+              }) %>
+            </span>
+          <% } %>
           <% post.tags.each(function (tag, index) { %>
-            <span class="new badge <%= theme.tagColors[index % post.tags.length] %>" data-badge-caption=""><a class="<%= theme.titleColor %>-text" href=<%= url_for(tag.path) %>><%= tag.name %></a></span>
+            <span class="new badge <%= theme.tagColors[index % post.tags.length] %>" data-badge-caption="">
+              <%- link_to(url_for(tag.path), tag.name, {
+                external: theme.external_link,
+                class: (theme.titleColor || white) + '-text'
+              }) %>
+            </span>
           <% }); %>
         </div>
       </div>

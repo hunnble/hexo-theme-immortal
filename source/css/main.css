@@ -43,7 +43,8 @@ a {
   color: inherit; }
 
 blockquote {
-  border-left: 5px solid #909099; }
+  border-left: 5px solid #909099;
+  margin: 1rem; }
 
 /* fallback */
 @font-face {
@@ -180,8 +181,14 @@ h6 {
 .pinned {
   z-index: 1; }
 
+.inline-title {
+  display: inline-block;
+  margin: .5rem .5rem .5rem 0; }
+
 .article {
   line-height: 1.8rem; }
+  .article .link {
+    text-decoration: underline; }
   .article * {
     max-width: 100%; }
 
@@ -201,3 +208,10 @@ h6 {
 
 .description {
   text-indent: 2rem; }
+
+.recent-post-item {
+  margin-bottom: 2rem; }
+
+.category {
+  float: none !important;
+  margin-left: 0 !important; }

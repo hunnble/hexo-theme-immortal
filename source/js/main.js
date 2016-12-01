@@ -55,6 +55,9 @@ function post() {
 
 function article() {
   var article = $('.article');
-  article.find('ul').addClass('collection');
-  article.find('li').addClass('collection-item');
+  article.find('.card-content a').addClass('link');
+  article.find('.card-content ul').addClass('collection');
+  article.find('.card-content ol').addClass('collection');
+  article.find('.card-content li').addClass('collection-item');
+  article.find('.card-content table').addClass('centered responsive-table');
 }

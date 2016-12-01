@@ -90,18 +90,18 @@ highlight:
   style: default
 
 # pagination numbers
-prev_num: 1
-next_num: 1
+prev_num: 2
+next_num: 2
 
 # Date / Time format
 date_format: MMM, YYYY
 time_format: Do Ah:m:ss
 
 # translucent
-translucent: true
+translucent: false
 
 # blur style for background, can be set in 1, 2, 3 or false
-background_blur: 1
+background_blur: 0
 
 # color and subColor
 color: darken-4 deep-purple
