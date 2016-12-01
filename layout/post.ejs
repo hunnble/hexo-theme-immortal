@@ -1,4 +1,3 @@
-
 <% if (page.categories && page.categories.length > 0) { %>
   <div class="valign-wrapper">
     <% var pathname = ''; %>
@@ -17,52 +16,73 @@
   </div>
 <% } %>
 <article id="post" class="card article">
-  <div class="card-panel <%= theme.color %> <%= theme.titleColor %>-text">
-    <div class="row">
-      <div class="col m12 l9">
-        <h3 class="inline-title"><%- page.title || '' %></h3>
-        <div class="valign-wrapper <%= theme.titleColor %>-text">
-          <i class="material-icons valign">query_builder</i>
-          <time datetime="<%= page.date.toJSON() %>" class="valign">
-            <%= date(page.date, theme.date_format || config.date_format) %>
-            <%= date(page.date, theme.time_format || config.time_format) %>
-          </time>
+  <% if (page.photos && page.photos.length > 0) { %>
+
+    <!-- <a class="waves-effect waves-light btn" href="#modal1">Modal</a>
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+
+        <div class="carousel carousel-slider centered">
+            <a class="carousel-item" href="#0"><img src="<%= page.photos[0] %>"></a>
+            <a class="carousel-item" href="#two!"><img src="<%= url_for(page.photos[1]) %>"></a>
+            <a class="carousel-item" href="#2"><img src="http://lorempixel.com/800/400/food/3"></a>
+            <a class="carousel-item" href="#3"><img src="http://lorempixel.com/800/400/food/4"></a>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+      </div>
+    </div> -->
+
+  <% } else { %>
+    <div class="card-panel <%= theme.color %> <%= theme.titleColor %>-text">
+      <div class="row">
+        <div class="col m12 l9">
+          <h3 class="inline-title"><%- page.title || '' %></h3>
+          <div class="valign-wrapper <%= theme.titleColor %>-text">
+            <i class="material-icons valign">query_builder</i>
+            <time datetime="<%= page.date.toJSON() %>" class="valign">
+              <%= date(page.date, theme.date_format || config.date_format) %>
+              <%= date(page.date, theme.time_format || config.time_format) %>
+            </time>
+          </div>
+          <% if (page.tags) { %>
+            <div class="section">
+              <% page.tags.each(function (tag, index) { %>
+                <span class="new badge <%= theme.tagColors[index % page.tags.length] %> left" data-badge-caption=""><a class="<%= theme.titleColor %>-text" href=<%= url_for(tag.path) %>><%= tag.name %></a></span>
+              <% }); %>
+            </div>
+          <% } %>
         </div>
-        <% if (page.tags) { %>
-          <div class="section">
-            <% page.tags.each(function (tag, index) { %>
-              <span class="new badge <%= theme.tagColors[index % page.tags.length] %> left" data-badge-caption=""><a class="<%= theme.titleColor %>-text" href=<%= url_for(tag.path) %>><%= tag.name %></a></span>
-            <% }); %>
+
+        <% if (is_post()) { %>
+          <div class="col l2 push-l2 hide-on-med-and-down">
+            <div class="toc">
+              <%- toc(page.content, {
+                'class': 'table-of-contents card-panel',
+                'list_number': false
+              }) %>
+            </div>
           </div>
         <% } %>
       </div>
-
-      <% if (is_post()) { %>
-        <div class="col l2 push-l2 hide-on-med-and-down">
-          <div class="toc">
-            <%- toc(page.content, {
-              'class': 'table-of-contents card-panel',
-              'list_number': false
-            }) %>
-          </div>
-        </div>
-      <% } %>
     </div>
-  </div>
+  <% } %>
+
 
   <div class="card-content">
     <%- page.content %>
   </div>
-  <% Object.keys(page).forEach(function (key) { %>
+  <!-- <% Object.keys(page).forEach(function (key) { %>
     <div class="card-panel">
       <%= key %>
       <br />
     </div>
-  <% }); %>
-  <% if (page.prev) { %>
+  <% }); %> -->
+  <!-- <% if (page.prev) { %>
     <a href=<% page.prev %>>prev</a>
   <% } %>
   <% if (page.next) { %>
     <a href=<% page.next %>><% page.next %></a>
-  <% } %>
+  <% } %> -->
 </article>

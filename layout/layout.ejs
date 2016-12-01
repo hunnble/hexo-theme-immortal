@@ -43,52 +43,62 @@ pageTitle += ' [ ' + config.title + ' ]';
 
 <% if (theme.background_blur) { %>
   <% var blurClass = ['sm', 'md', 'bg']; %>
-  <div class="background-wrapper blur-<%= blurClass[theme.background_blur - 1] %>">
+  <div class="parallax-container">
+    <div class="parallax"><img src="<%= theme.background %>"></div>
+  </div>
+  <!-- <div class="background-wrapper blur-<%= blurClass[theme.background_blur - 1] %>"> -->
 <% } else { %>
-  <div class="background-wrapper">
+  <div class="parallax-container">
+    <div class="parallax"><img src="<%= theme.background %>"></div>
+  </div>
+  <!-- <div class="background-wrapper"> -->
 <% } %>
-  <img src=<%= theme.background %> alt="" class="background" />
+  <!-- <img src=<%= theme.background %> alt="" class="background" /> -->
 </div>
 
-<div class="row" id="container-outer">
+<main>
 
-  <% if (theme.translucent) { %>
-    <% var translucent = 'half-opacity' %>
-  <% } else { %>
-    <% var translucent = '' %>
-  <% } %>
+  <div class="row" id="container-outer">
 
-  <div class="col m8 s12 push-m2 <%= translucent %>" id="container-inner">
-    <% if (page.layout === 'about') { %>
-      <%- partial('about.ejs') %>
+    <% if (theme.translucent) { %>
+      <% var translucent = 'half-opacity' %>
     <% } else { %>
-      <%- body %>
-      <%- partial('partials/links') %>
+      <% var translucent = '' %>
     <% } %>
+
+    <div class="col m8 s12 push-m2 <%= translucent %>" id="container-inner">
+      <% if (page.layout === 'about') { %>
+        <%- partial('about.ejs') %>
+      <% } else { %>
+        <%- body %>
+        <%- partial('partials/links') %>
+      <% } %>
+    </div>
+
+    <aside class="col m2 push-m1 hide-on-med-and-down">
+
+      <!-- <% if (theme.widgits) { %>
+        <div class="card-panel <%= theme.color %>-text">
+          <% if (theme.widgits.category && site.categories.length) { %>
+            <%- list_categories({
+              'class': 'collection'
+            }) %>
+          <% } %>
+        </div>
+        <div class="card-panel <%= theme.color %>-text">
+          <% if (theme.widgits.tag && site.tags.length) { %>
+            <%- list_tags({}) %>
+          <% } %>
+        </div>
+      <% } %> -->
+
+    </aside>
+
   </div>
 
-  <aside class="col m2 push-m1 hide-on-med-and-down">
+</main>
 
-    <!-- <% if (theme.widgits) { %>
-      <div class="card-panel <%= theme.color %>-text">
-        <% if (theme.widgits.category && site.categories.length) { %>
-          <%- list_categories({
-            'class': 'collection'
-          }) %>
-        <% } %>
-      </div>
-      <div class="card-panel <%= theme.color %>-text">
-        <% if (theme.widgits.tag && site.tags.length) { %>
-          <%- list_tags({}) %>
-        <% } %>
-      </div>
-    <% } %> -->
-
-  </aside>
-
-  <%- partial('partials/footer') %>
-
-</div>
+<%- partial('partials/footer') %>
 
 <% if (theme.highlight.enable) { %>
   <script src="/js/highlight.min.js"></script>

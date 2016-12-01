@@ -158,6 +158,17 @@ h5 {
 h6 {
   font-size: 0.75rem; }
 
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column; }
+
+main {
+  flex: 1 0 auto; }
+
+footer {
+  margin-top: 1.5rem !important; }
+
 .background-wrapper {
   position: fixed;
   top: 0;

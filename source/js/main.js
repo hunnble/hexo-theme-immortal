@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+  $('.parallax').parallax();
   $('.collapsible').collapsible();
   $('#side-nav-switcher').sideNav();
 
@@ -36,6 +37,13 @@ function highlight() {
 }
 
 function post() {
+  // $('.carousel.carousel-slider')
+  //   .carousel({
+  //     dist: 0,
+  //     indicators: true,
+  //     full_width: true
+  //   });
+
   if (!$('.toc').offset()) {
     return false;
   }

@@ -51,7 +51,7 @@
           </div>
         </div>
         <div class="card-action section">
-          <% if (post.excerpt) { %>
+          <% if (post.excerpt || !post.title) { %>
             <span class="new badge <%= theme.color %> left" data-badge-caption="">
               <%- link_to(config.root + post.path, _p('more'), {
                 external: theme.external_link,

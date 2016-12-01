@@ -4,7 +4,7 @@
   <% var translucent = '' %>
 <% } %>
 
-<footer class="page-footer <%= theme.color || teal %> <%= translucent %> col m8 s12 push-m2">
+<footer class="page-footer <%= theme.color %> <%= translucent %>">
   <div class="container section">
     <div class="row">
       <div class="col l6 s12">
@@ -14,13 +14,24 @@
         <div class="<%= theme.titleColor || white %>-text">
           <%- tagcloud(site.tags, {}) %>
         </div>
+        <ul>
+          <% Object.keys(theme.links).forEach(function(key, index) { %>
+            <% if (theme.links[key].href && theme.links[key].icon) { %>
+              <li class="left">
+                <a class="btn-floating <%= theme.links[key].color || theme.color %> center-align waves-effect %>" href=<%= theme.links[key].href %>>
+                  <img class="link-img" src=<%= theme.links[key].icon %> alt=<%= key %>>
+                </a>
+              </li>
+            <% } %>
+          <% }); %>
+        </ul>
       </div>
       <div class="col l4 offset-l2 s12">
         <h5 class="white-text">Links</h5>
         <% if (theme.friends) { %>
           <ul>
             <% Object.keys(theme.friends).forEach(function (key) { %>
-              <li><a class="<%= theme.titleColor || white %>-text" href=<%= theme.friends[key] %>><%= key %></a></li>
+              <li><a class="<%= theme.titleColor %>-text" href=<%= theme.friends[key] %>><%= key %></a></li>
             <% }); %>
           </ul>
         <% } %>

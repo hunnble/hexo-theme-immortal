@@ -101,7 +101,7 @@ time_format: Do Ah:m:ss
 translucent: false
 
 # blur style for background, can be set in 1, 2, 3 or false
-background_blur: 0
+background_blur: false
 
 # color and subColor
 color: darken-4 deep-purple
