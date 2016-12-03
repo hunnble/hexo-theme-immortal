@@ -76,3 +76,9 @@ blockquote {
 
 footer.page-footer {
   margin-top: 0; }
+
+.navbar-fixed {
+  position: fixed; }
+
+.parallax .valign {
+  width: 100%; }

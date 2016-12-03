@@ -101,7 +101,7 @@ time_format: Do Ah:m:ss
 translucent: false
 
 # blur style for background, can be set in 1, 2, 3 or false
-background_blur: false
+background_blur: 1
 
 # color and subColor
 color: darken-4 deep-purple
@@ -115,3 +115,15 @@ tagColors:
   - green
   - red
   - yellow
+
+# shadow level
+wrapperShadowLevel: 0
+titleShadowLevel: 5
+contentShadowLevel: 0
+
+# mode
+# layout: parallax/default
+# column: single/default
+mode:
+  layout: parallax
+  column: single

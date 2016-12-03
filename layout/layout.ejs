@@ -17,7 +17,6 @@ pageTitle += ' [ ' + config.title + ' ]';
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <% if (theme.fonts !== undefined && theme.fonts.length > 0) { %>
-    <!-- fonts list from config.yml -->
     <% theme.fonts.forEach(function(url) { %>
       <link rel="application/font-woff2" href="<%=url%>">
     <% }); %>
@@ -30,7 +29,6 @@ pageTitle += ' [ ' + config.title + ' ]';
     <% } %>
   <% } %>
   <% if (theme.stylesheets !== undefined && theme.stylesheets.length > 0) { %>
-    <!-- stylesheets list from config.yml -->
     <% theme.stylesheets.forEach(function(url) { %>
       <link rel="stylesheet" href="<%=url%>">
     <% }); %>
@@ -41,32 +39,47 @@ pageTitle += ' [ ' + config.title + ' ]';
 <%- partial('partials/header') %>
 <%- partial('partials/sideNav') %>
 
-<% if (theme.background_blur) { %>
-  <% var blurClass = ['sm', 'md', 'bg']; %>
-  <div class="parallax-container">
-    <div class="parallax"><img src="<%= theme.background %>"></div>
-  </div>
-  <!-- <div class="background-wrapper blur-<%= blurClass[theme.background_blur - 1] %>"> -->
+<% if (page.photos && page.photos.length > 0) { %>
+  <% var background = page.photos[0]; %>
 <% } else { %>
-  <div class="parallax-container">
-    <div class="parallax"><img src="<%= theme.background %>"></div>
-  </div>
-  <!-- <div class="background-wrapper"> -->
+  <% var background = theme.background; %>
 <% } %>
-  <!-- <img src=<%= theme.background %> alt="" class="background" /> -->
+
+<%
+  var blurLevels = ['sm', 'md', 'bg'],
+    blurLevel = theme.background_blur ?
+      'blur-' + blurLevels[theme.background_blur - 1] :
+      '';
+%>
+<% if (theme.mode.layout && theme.mode.layout === 'parallax') { %>
+  <%- partial('partials/parallax.ejs') %>
+<% } else { %>
+  <div class="background-wrapper <%= blurLevel %>">
+    <img src="<%= background %>">
+  </div>
+<% } %>
 </div>
 
-<main>
+<main id="container-outer">
 
-  <div class="row" id="container-outer">
+  <% if (theme.translucent) { %>
+    <% var translucent = 'half-opacity' %>
+  <% } else { %>
+    <% var translucent = '' %>
+  <% } %>
 
-    <% if (theme.translucent) { %>
-      <% var translucent = 'half-opacity' %>
-    <% } else { %>
-      <% var translucent = '' %>
-    <% } %>
+  <%
+    var mainClass = 'col m8 s12';
+  %>
+  <% if (theme.mode.column && theme.mode.column === 'single') { %>
+    <% mainClass += ' push-m2'; %>
+  <% } else { %>
+    <% mainClass += ' push-m1'; %>
+  <% } %>
 
-    <div class="col m8 s12 push-m2 <%= translucent %>" id="container-inner">
+  <div class="row <%= translucent %>">
+
+    <div class="<%= mainClass %>" id="container-inner">
       <% if (page.layout === 'about') { %>
         <%- partial('about.ejs') %>
       <% } else { %>
@@ -75,24 +88,28 @@ pageTitle += ' [ ' + config.title + ' ]';
       <% } %>
     </div>
 
-    <aside class="col m2 push-m1 hide-on-med-and-down">
+    <% if (!theme.mode.column || theme.mode.column !== 'single') { %>
 
-      <!-- <% if (theme.widgits) { %>
-        <div class="card-panel <%= theme.color %>-text">
-          <% if (theme.widgits.category && site.categories.length) { %>
-            <%- list_categories({
-              'class': 'collection'
-            }) %>
-          <% } %>
-        </div>
-        <div class="card-panel <%= theme.color %>-text">
-          <% if (theme.widgits.tag && site.tags.length) { %>
-            <%- list_tags({}) %>
-          <% } %>
-        </div>
-      <% } %> -->
+      <aside class="col m2 push-m1 hide-on-med-and-down">
 
-    </aside>
+        <% if (theme.widgits) { %>
+          <div class="card-panel <%= theme.color %>-text">
+            <% if (theme.widgits.category && site.categories.length) { %>
+              <%- list_categories({
+                'class': 'collection'
+              }) %>
+            <% } %>
+          </div>
+          <div class="card-panel <%= theme.color %>-text">
+            <% if (theme.widgits.tag && site.tags.length) { %>
+              <%- list_tags({}) %>
+            <% } %>
+          </div>
+        <% } %>
+
+      </aside>
+
+    <% } %>
 
   </div>
 

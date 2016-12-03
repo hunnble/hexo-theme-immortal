@@ -1,19 +1,14 @@
 <div class="navbar-fixed">
-  <nav class="<%= theme.titleColor %> z-depth-0">
+  <nav class="transparent z-depth-0">
     <div class="nav-wrapper">
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <% Object.keys(theme.menu).forEach(function(key, index) { %>
           <li>
-            <a class="waves-effect <%= theme.color %>-text" href="<%= theme.menu[key] %>"><%= _p(key) %></a>
+            <a class="waves-effect <%= theme.titleColor %>-text" href="<%= theme.menu[key] %>"><%= _p(key) %></a>
           </li>
         <% }); %>
       </ul>
-      <a href="#" data-activates="slide-nav" class="button-collapse show-on-large <%= theme.color %>-text" id="side-nav-switcher"><i class="material-icons">menu</i></a>
+      <a href="#" data-activates="slide-nav" class="button-collapse show-on-large <%= theme.titleColor %>-text" id="side-nav-switcher"><i class="material-icons">menu</i></a>
     </div>
   </nav>
-  <!-- <div class="fixed-action-btn navFloatingBtn click-to-toggle">
-    <a class="btn-floating btn-large waves-effect <%= theme.subColor %>">
-      <i class="large material-icons">location_on</i>
-    </a>
-  </div> -->
 </div>

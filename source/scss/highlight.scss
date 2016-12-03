@@ -10,6 +10,9 @@ code {
     white-space: pre;
   }
 }
+code, table .line {
+  font-family: Consolas, Monaco, Courier New, Lucida Console;
+}
 pre {
   position: relative;
 }

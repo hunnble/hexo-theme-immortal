@@ -5,7 +5,7 @@ $(document).ready(function() {
   $('#side-nav-switcher').sideNav();
 
   article();
-  links();
+  // links();
   highlight();
   post();
 

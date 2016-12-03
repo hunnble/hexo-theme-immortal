@@ -28,7 +28,7 @@ $i: 1;
 
 @for $i from 1 through 6 {
   h#{$i} {
-    font-size: (6-$i)*0.25 + 0.75rem;
+    font-size: (6-$i)*0.4 + 0.75rem;
   }
 }
 
@@ -87,6 +87,7 @@ footer {
   margin-top: $floatingBtnHeight/-2;
 }
 #container-outer {
+  margin-top: $navTop * 1.5;
   margin-bottom: 0;
   #container-inner>.card, #container-inner>.card-panel {
     margin-bottom: 0;
