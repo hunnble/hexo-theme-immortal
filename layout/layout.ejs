@@ -28,6 +28,9 @@ pageTitle += ' [ ' + config.title + ' ]';
       <link rel="stylesheet" href="//cdn.bootcss.com/highlight.js/9.8.0/styles/<%= theme.highlight.style %>.min.css">
     <% } %>
   <% } %>
+  <% if (theme.fancybox) { %>
+    <link rel="stylesheet" href="/libs/fancybox/source/jquery.fancybox.css" type="text/css" media="screen" />
+  <% } %>
   <% if (theme.stylesheets !== undefined && theme.stylesheets.length > 0) { %>
     <% theme.stylesheets.forEach(function(url) { %>
       <link rel="stylesheet" href="<%=url%>">
@@ -53,14 +56,16 @@ pageTitle += ' [ ' + config.title + ' ]';
 %>
 <% if (theme.mode.layout && theme.mode.layout === 'parallax') { %>
   <%- partial('partials/parallax.ejs') %>
+  <% var containerOuterClass = '' %>
 <% } else { %>
   <div class="background-wrapper <%= blurLevel %>">
     <img src="<%= background %>">
   </div>
+  <% var containerOuterClass = 'container-outer' %>
 <% } %>
 </div>
 
-<main id="container-outer">
+<main id="container-outer" class="<%= containerOuterClass %>">
 
   <% if (theme.translucent) { %>
     <% var translucent = 'half-opacity' %>
@@ -120,10 +125,14 @@ pageTitle += ' [ ' + config.title + ' ]';
 <% if (theme.highlight.enable) { %>
   <script src="/js/highlight.min.js"></script>
 <% } %>
+<script type="text/javascript" src="/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/js/materialize.min.js"></script>
+<% if (theme.fancybox) { %>
+  <script type="text/javascript" src="/libs/fancybox/source/jquery.fancybox.pack.js"></script>
+<% } %>
 <% if (theme.scripts !== undefined && theme.scripts.length > 0) { %>
-  <!-- scripts list from theme config.yml -->
   <% theme.scripts.forEach(function(url) { %>
-    <script src=<%= url %>></script>
+    <script type="text/javascript" src=<%= url %>></script>
   <% }); %>
 <% } %>
 

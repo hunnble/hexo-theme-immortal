@@ -8,6 +8,7 @@ $(document).ready(function() {
   // links();
   highlight();
   post();
+  fancybox();
 
 });
 
@@ -16,21 +17,24 @@ function links() {
 }
 
 function highlight() {
-  if (!hljs) {
+  if ('undefined' === hljs) {
     return false;
   }
-  hljs.initHighlightingOnLoad();
-  $('pre code').each(function(i, block) {
-    var lines = $(this).text().split('\n').length - 1;
-    var $numbering = $('<ul/>').addClass('pre-numbering');
-    $(this)
-      .addClass('has-numbering')
-      .parent()
-      .append($numbering);
-    for(i=1;i<=lines;i++){
-      $numbering.append($('<li/>').text(i));
-    }
+  // hljs.initHighlightingOnLoad();
+  $('pre div').each(function(i, block) {
+    hljs.highlightBlock(block);
   });
+  // $('pre div').each(function(i, block) {
+  //   var lines = $(this).text().split('\n').length - 1;
+  //   var $numbering = $('<ul/>').addClass('pre-numbering');
+  //   $(this)
+  //     .addClass('has-numbering')
+  //     .parent()
+  //     .append($numbering);
+  //   for(i=1;i<=lines;i++){
+  //     $numbering.append($('<li/>').text(i));
+  //   }
+  // });
   $('code').each(function(i, inline) {
     hljs.highlightBlock(inline);
   });
@@ -68,4 +72,11 @@ function article() {
   article.find('.card-content ol').addClass('collection');
   article.find('.card-content li').addClass('collection-item');
   article.find('.card-content table').addClass('centered responsive-table');
+  article.find('.card-content figure table').removeClass('centered responsive-table');
+}
+
+function fancybox() {
+  if ('undefined' !== $(".fancybox")) {
+    $(".fancybox").fancybox();
+  }
 }

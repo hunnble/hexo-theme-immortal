@@ -26,3 +26,22 @@ pre {
   text-align: right;
   font-size: 1em;
   list-style: none; }
+
+.code .hljs {
+  min-height: 41px; }
+
+figure.highlight {
+  margin-left: auto;
+  margin-right: auto;
+  overflow-x: auto; }
+
+.highlight figcaption {
+  margin: -5px 0 5px;
+  font-size: .9rem;
+  color: #999; }
+
+.highlight figcaption a {
+  float: right; }
+
+.highlight .line.marked, .highlight .line.marked * {
+  color: #e23f5c !important; }

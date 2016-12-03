@@ -1,4 +1,7 @@
 @charset "UTF-8";
+body {
+  background-color: #fff; }
+
 body, div, dl, dt, dd, ul, ol, li, pre,
 form, fieldset, input, textarea, p, th, td {
   padding: 0;
@@ -112,6 +115,25 @@ pre {
   font-size: 1em;
   list-style: none; }
 
+.code .hljs {
+  min-height: 41px; }
+
+figure.highlight {
+  margin-left: auto;
+  margin-right: auto;
+  overflow-x: auto; }
+
+.highlight figcaption {
+  margin: -5px 0 5px;
+  font-size: .9rem;
+  color: #999; }
+
+.highlight figcaption a {
+  float: right; }
+
+.highlight .line.marked, .highlight .line.marked * {
+  color: #e23f5c !important; }
+
 .about .row {
   overflow: hidden; }
 
@@ -209,6 +231,13 @@ footer {
   line-height: 1.8rem; }
   .article .link {
     text-decoration: underline; }
+  .article blockquote footer {
+    font-style: italic; }
+    .article blockquote footer p {
+      font-weight: 500; }
+    .article blockquote footer cite {
+      padding-left: .5rem;
+      font-size: .8rem; }
   .article * {
     max-width: 100%; }
 
@@ -219,10 +248,12 @@ footer {
   margin-top: -1.75rem; }
 
 #container-outer {
-  margin-top: 6rem;
   margin-bottom: 0; }
   #container-outer #container-inner > .card, #container-outer #container-inner > .card-panel {
     margin-bottom: 0; }
+
+.container-outer {
+  margin-top: 6rem; }
 
 .pagination {
   margin: 0; }
@@ -236,3 +267,7 @@ footer {
 .category {
   float: none !important;
   margin-left: 0 !important; }
+
+.fancybox-small {
+  width: 15vw;
+  height: 15vw; }

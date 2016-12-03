@@ -4,6 +4,9 @@ menu:
   archive_title: /archive
   about_title: /about
 
+# duoshuo
+duoshuo_shortname: hunnble
+
 # links to other websites
 links:
   github:
@@ -80,8 +83,6 @@ stylesheets:
 
 # scripts loaded in the end of the body
 scripts:
-- /js/jquery-2.1.1.min.js
-- /js/materialize.min.js
 - /js/main.js
 
 # highlight code block, make sure that _config.yml in root dir be false
@@ -89,12 +90,15 @@ highlight:
   enable: true
   style: default
 
+# use fancybox to show pictures
+fancybox: true
+
 # pagination numbers
 prev_num: 2
 next_num: 2
 
 # Date / Time format
-date_format: MMM, YYYY
+date_format: YYYY MMM
 time_format: Do Ah:m:ss
 
 # translucent

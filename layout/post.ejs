@@ -1,50 +1,65 @@
-<% if (page.categories && page.categories.length > 0) { %>
+<% if (!theme.mode.layout || theme.mode.layout !== 'parallax' && page.categories && page.categories.length > 0) { %>
   <div class="valign-wrapper">
     <% var pathname = ''; %>
     <% page.categories.each(function (category, i) { %>
       <% pathname += '/' + category.name; %>
         <%- link_to(url_for(config.category_dir) + pathname, category.name, {
           external: theme.external_link,
-          class: 'btn-flat waves-effect ' + (theme.mode.layout === 'parallax' ? theme.color : theme.titleColor) + '-text'
+          class: 'btn-flat waves-effect ' + theme.titleColor + '-text'
         }) %>
       <% if (i < page.categories.length - 1) { %>
-        <i class="tiny material-icons <%= theme.mode.layout === 'parallax' ? theme.color : theme.titleColor %>-text valign">chevron_right</i>
+        <i class="tiny material-icons <%= theme.titleColor %>-text valign">chevron_right</i>
       <% } %>
     <% }); %>
   </div>
 <% } %>
 <section id="post" class="card article z-depth-<%= theme.wrapperShadowLevel || 0 %>">
-  <% if (page.photos && page.photos.length > 0) { %>
-
-    <!-- <a class="waves-effect waves-light btn" href="#modal1">Modal</a>
-    <div id="modal1" class="modal">
-      <div class="modal-content">
-
-        <div class="carousel carousel-slider centered">
-            <a class="carousel-item" href="#0"><img src="<%= page.photos[0] %>"></a>
-            <a class="carousel-item" href="#two!"><img src="<%= url_for(page.photos[1]) %>"></a>
-            <a class="carousel-item" href="#2"><img src="http://lorempixel.com/800/400/food/3"></a>
-            <a class="carousel-item" href="#3"><img src="http://lorempixel.com/800/400/food/4"></a>
-          </div>
+  <% if (theme.mode.layout === 'parallax') { %>
+    <div class="card-panel z-depth-0 <%= theme.color %>-text">
+      <div class="valign-wrapper">
+        <i class="material-icons valign">query_builder</i>&nbsp
+        <time datetime="<%= page.date.toJSON() %>" class="valign">
+          <%= date(page.date, theme.date_format || config.date_format) %>
+          <%= date(page.date, theme.time_format || config.time_format) %>
+        </time>
       </div>
-      <div class="modal-footer">
-        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-      </div>
-    </div> -->
-
+      <% if (page.tags && page.tags.length > 0) { %>
+        <div class="section">
+          <% page.tags.each(function (tag, index) { %>
+            <span class="new badge <%= theme.tagColors[index % page.tags.length] %> left" data-badge-caption=""><a class="<%= theme.titleColor %>-text" href=<%= url_for(tag.path) %>><%= tag.name %></a></span>
+          <% }); %>
+        </div>
+      <% } %>
+      <% if (page.categories && page.categories.length > 0) { %>
+        <div class="valign-wrapper section">
+          <% var pathname = ''; %>
+          <% page.categories.each(function (category, i) { %>
+            <% pathname += '/' + category.name; %>
+            <span class="new badge category <%= theme.color %> valign" data-badge-caption="">
+              <%- link_to(url_for(config.category_dir) + pathname, category.name, {
+                external: theme.external_link
+              }) %>
+            </span>
+            <% if (i < page.categories.length - 1) { %>
+              <i class="tiny material-icons <%= theme.color %>-text valign">chevron_right</i>
+            <% } %>
+          <% }); %>
+        </div>
+      <% } %>
+    </div>
   <% } else { %>
     <header class="section <%= theme.color %> <%= theme.titleColor %>-text z-depth-<%= theme.titleShadowLevel || 0 %>">
       <div class="row container valign">
         <div class="col m12 l9">
           <h3 class="inline-title"><%- page.title || '' %></h3>
           <div class="valign-wrapper <%= theme.titleColor %>-text">
-            <i class="material-icons valign">query_builder</i>
+            <i class="material-icons valign">query_builder</i>&nbsp
             <time datetime="<%= page.date.toJSON() %>" class="valign">
               <%= date(page.date, theme.date_format || config.date_format) %>
               <%= date(page.date, theme.time_format || config.time_format) %>
             </time>
           </div>
-          <% if (page.tags) { %>
+          <% if (page.tags && page.tags.length > 0) { %>
             <div class="section">
               <% page.tags.each(function (tag, index) { %>
                 <span class="new badge <%= theme.tagColors[index % page.tags.length] %> left" data-badge-caption=""><a class="<%= theme.titleColor %>-text" href=<%= url_for(tag.path) %>><%= tag.name %></a></span>
@@ -53,7 +68,7 @@
           <% } %>
         </div>
 
-        <% if (is_post()) { %>
+        <% if (is_post() && page.toc) { %>
           <div class="col l2 push-l2 hide-on-med-and-down">
             <div class="toc">
               <%- toc(page.content, {
@@ -67,20 +82,33 @@
     </header>
   <% } %>
 
-
   <div class="card-content z-depth-<%= theme.contentShadowLevel || 0 %>">
+
+    <% if (page.photos && page.photos.length > 0) { %>
+      <% page.photos.forEach(function(photo, i) { %>
+        <a class="fancybox" rel="group" href="<%= photo %>"><img class="fancybox-small" src="<%= photo %>" alt="" /></a>
+      <% }); %>
+    <% } %>
+
     <%- page.content %>
+
   </div>
-  <!-- <% Object.keys(page).forEach(function (key) { %>
-    <div class="card-panel">
-      <%= key %>
-      <br />
-    </div>
-  <% }); %> -->
-  <!-- <% if (page.prev) { %>
-    <a href=<% page.prev %>>prev</a>
-  <% } %>
-  <% if (page.next) { %>
-    <a href=<% page.next %>><% page.next %></a>
-  <% } %> -->
+
 </section>
+
+<% if (theme.duoshuo_shortname) { %>
+  <section class="comment" id="duoshuo">
+    <div class="ds-thread" data-thread-key="<%= page.layout %>-<%= page.slug %>" data-title="<%= page.title %>" data-url="<%= page.permalink %>"></div>
+    <script type="text/javascript">
+      var duoshuoQuery = {short_name:'<%= theme.duoshuo_shortname %>'};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+    </script>
+  </section>
+<% } %>
