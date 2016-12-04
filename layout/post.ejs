@@ -15,7 +15,8 @@
 <% } %>
 <section id="post" class="card article z-depth-<%= theme.shadowLevel || 0 %>">
   <% if (theme.mode.layout === 'parallax') { %>
-    <div class="card-panel z-depth-0 <%= theme.color %>-text">
+    <div class="card-panel z-depth-0 <%= theme.subColor %>-text">
+
       <div class="valign-wrapper">
         <i class="material-icons valign">query_builder</i>&nbsp
         <time datetime="<%= page.date.toJSON() %>" class="valign">
@@ -23,13 +24,16 @@
           <%= date(page.date, theme.time_format || config.time_format) %>
         </time>
       </div>
-      <% if (page.tags && page.tags.length > 0) { %>
-        <div class="section">
-          <% page.tags.each(function (tag, index) { %>
-            <span class="new badge <%= theme.tagColors[index % page.tags.length] %> left" data-badge-caption=""><a class="<%= theme.titleColor %>-text" href=<%= url_for(tag.path) %>><%= tag.name %></a></span>
-          <% }); %>
+
+      <% if (theme.busuanzi) { %>
+        <div class="valign-wrapper sm-text">
+          <i class="material-icons valign">grade</i>&nbsp
+          <span id="busuanzi_container_page_pv" class="valign">
+            <%= _p('page_pv') %><span id="busuanzi_value_page_pv"></span>次
+          </span>
         </div>
       <% } %>
+
       <% if (page.categories && page.categories.length > 0) { %>
         <div class="valign-wrapper section">
           <% var pathname = ''; %>
@@ -46,6 +50,15 @@
           <% }); %>
         </div>
       <% } %>
+
+      <% if (page.tags && page.tags.length > 0) { %>
+        <div class="section">
+          <% page.tags.each(function (tag, index) { %>
+            <span class="new badge <%= theme.tagColors[index % page.tags.length] %> left" data-badge-caption=""><a class="<%= theme.titleColor %>-text" href=<%= url_for(tag.path) %>><%= tag.name %></a></span>
+          <% }); %>
+        </div>
+      <% } %>
+
     </div>
   <% } else { %>
     <header class="section <%= theme.color %> <%= theme.titleColor %>-text z-depth-0">
@@ -59,6 +72,14 @@
               <%= date(page.date, theme.time_format || config.time_format) %>
             </time>
           </div>
+          <% if (theme.busuanzi) { %>
+            <div class="valign-wrapper <%= theme.titleColor %>-text sm-text">
+              <i class="material-icons valign">grade</i>&nbsp;
+              <span id="busuanzi_container_page_pv" class="valign">
+                <%= _p('page_pv') %><span id="busuanzi_value_page_pv"></span>次
+              </span>
+            </div>
+          <% } %>
           <% if (page.tags && page.tags.length > 0) { %>
             <div class="section">
               <% page.tags.each(function (tag, index) { %>
@@ -68,16 +89,6 @@
           <% } %>
         </div>
 
-        <% if (is_post() && page.toc) { %>
-          <div class="col l2 push-l2 hide-on-med-and-down">
-            <div class="toc">
-              <%- toc(page.content, {
-                'class': 'table-of-contents card-panel',
-                'list_number': false
-              }) %>
-            </div>
-          </div>
-        <% } %>
       </div>
     </header>
   <% } %>

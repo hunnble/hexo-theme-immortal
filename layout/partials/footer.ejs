@@ -8,23 +8,24 @@
   <div class="container section">
     <div class="row">
       <div class="col l6 s12">
-        <p class="<%= theme.titleColor || white %>-text text-lighten-4">
-          Site by <%= config.author || theme.author %> using
+        <p class="<%= theme.titleColor %>-text text-lighten-4">
+          Site by <%= config.author || theme.author %> using <%- link_to('https://hexo.io/zh-cn/', 'hexo', {
+            external: config.external_link
+          }) %>
         </p>
-        <div class="<%= theme.titleColor || white %>-text">
-          <%- tagcloud(site.tags, {}) %>
+        <div class="section">
+          <ul>
+            <% Object.keys(theme.links).forEach(function(key, index) { %>
+              <% if (theme.links[key].href && theme.links[key].icon) { %>
+                <li class="left">
+                  <a class="link-wrapper btn-floating <%= theme.links[key].color || theme.color %> center-align waves-effect %>" href=<%= theme.links[key].href %>>
+                    <img class="link-img" src=<%= theme.links[key].icon %> alt=<%= key %>>
+                  </a>
+                </li>
+              <% } %>
+            <% }); %>
+          </ul>
         </div>
-        <ul>
-          <% Object.keys(theme.links).forEach(function(key, index) { %>
-            <% if (theme.links[key].href && theme.links[key].icon) { %>
-              <li class="left">
-                <a class="btn-floating <%= theme.links[key].color || theme.color %> center-align waves-effect %>" href=<%= theme.links[key].href %>>
-                  <img class="link-img" src=<%= theme.links[key].icon %> alt=<%= key %>>
-                </a>
-              </li>
-            <% } %>
-          <% }); %>
-        </ul>
       </div>
       <div class="col l4 offset-l2 s12">
         <h5 class="white-text">Links</h5>
@@ -34,6 +35,14 @@
               <li><a class="<%= theme.titleColor %>-text" href=<%= theme.friends[key] %>><%= key %></a></li>
             <% }); %>
           </ul>
+        <% } %>
+        <% if (theme.busuanzi) { %>
+          <h6 class="<%= theme.titleColor %>-text">
+            <%= _p('pv') %>&nbsp;<span id="busuanzi_value_site_pv"></span>
+          </h6>
+          <h6 class="<%= theme.titleColor %>-text">
+            <%= _p('uv') %>&nbsp;<span id="busuanzi_value_site_uv"></span>
+          </h6>
         <% } %>
       </div>
     </div>

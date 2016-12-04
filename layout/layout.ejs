@@ -74,7 +74,7 @@ pageTitle += ' [ ' + config.title + ' ]';
   <% } %>
 
   <%
-    var mainClass = 'col s12';
+    var mainClass = 'col s12 push-s0';
   %>
   <% if (theme.mode.column && theme.mode.column === 'single') { %>
     <% mainClass += ' m8 push-m2'; %>
@@ -98,7 +98,7 @@ pageTitle += ' [ ' + config.title + ' ]';
       <% if (theme.mode.layout && theme.mode.layout === 'parallax') { %>
         <%- partial('partials/sidebar', {
           background: 'transparent',
-          titleColor: theme.color,
+          titleColor: theme.subColor,
           color: theme.subColor
         }) %>
       <% } else { %>
@@ -117,6 +117,9 @@ pageTitle += ' [ ' + config.title + ' ]';
 
 <%- partial('partials/footer') %>
 
+<% if (theme.busuanzi) { %>
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<% } %>
 <% if (theme.highlight.enable) { %>
   <script src="/js/highlight.min.js"></script>
 <% } %>

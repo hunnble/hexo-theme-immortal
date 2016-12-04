@@ -5,10 +5,24 @@
 <% } %>
 <aside class="<%= sidebarClass %>">
 
+  <% if (is_post()) { %>
+    <div class="toc card-panel <%= background %> <%= color %>-text z-depth-0 collection">
+      <i class="material-icons right">subject</i>
+      <header class="subheader <%= titleColor %>-text">
+        <%= _p('toc_title') %>
+      </header>
+      <%- toc(page.content, {
+        'class': 'table-of-contents collection-item',
+        'list_number': false
+      }) %>
+    </div>
+  <% } %>
+
   <% if (theme.widgits) { %>
 
     <% if (theme.widgits.category && site.categories.length) { %>
       <section class="card-panel <%= background %> <%= color %>-text z-depth-0">
+        <i class="material-icons right">markunread_mailbox</i>
         <header class="subheader <%= titleColor %>-text">
           <%= _p('category_title') %>
         </header>
@@ -20,6 +34,7 @@
 
     <% if (theme.widgits.tag && site.tags.length) { %>
       <section class="card-panel <%= background %> <%= color %>-text z-depth-0">
+        <i class="material-icons right">label</i>
         <header class="subheader <%= titleColor %>-text">
           <%= _p('tag_title') %>
         </header>
@@ -36,8 +51,9 @@
       </section>
     <% } %>
 
-    <% if (theme.widgits.archive && site.posts.length) { %>
+    <% if (theme.widgits.recent_posts && site.posts.length) { %>
       <section class="card-panel <%= background %> <%= color %>-text z-depth-0">
+        <i class="material-icons right">input</i>
         <header class="subheader <%= titleColor %>-text">
           <%= _p('recent_title') %>
         </header>

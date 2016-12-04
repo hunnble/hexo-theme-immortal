@@ -23,15 +23,21 @@ $i: 1;
     width: #{$i*40}px;
     height: #{$i*40}px;
   }
+  .#{$key}-text {
+    font-size: 0.25 * $i + .5rem;
+  }
   $i: $i + 1;
 }
 
 @for $i from 1 through 6 {
   h#{$i} {
-    font-size: (6-$i)*0.4 + 0.75rem;
+    font-size: (6-$i)*0.6 + 0.75rem;
   }
 }
 
+html {
+  font-family: GillSans, Calibri, Trebuchet, STKaiti, KaiTi, sans-serif;
+}
 body {
   display: flex;
   min-height: 100vh;
@@ -137,12 +143,39 @@ footer {
   }
   .collection .collection-item {
     padding: .5rem;
-    border-bottom: 0px solid #fff;
     font-size: .8rem;
+  }
+  i {
+    margin: 0 !important;
+  }
+  a:hover {
+    text-decoration: underline;
   }
 }
 .sidebar-default {
   margin-top: 2.25rem;
+}
+.toc {
+  ol>li {
+    margin-left: .5rem;
+    list-style-type: none;
+  }
+}
+.page-footer {
+  .link-wrapper {
+    margin: .25rem;
+  }
+  a {
+    text-decoration: underline;
+  }
+}
+.collapsible {
+  span.row {
+    line-height: 200%;
+    a:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 @media only screen and (max-width : 992px) {

@@ -4,8 +4,8 @@ menu:
   archive_title: /archive
   about_title: /about
 
-# duoshuo
 duoshuo_shortname: hunnble
+busuanzi: true
 
 # links to other websites
 links:
@@ -56,10 +56,11 @@ friends:
 
 #widgits
 widgits:
+  profile: true
   search: true
   archive: true
   category: true
-  tag: true
+  tag: 'cloud'
   recent_posts: true
   recent_comments: true
   links: true

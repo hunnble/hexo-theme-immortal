@@ -4,5 +4,9 @@ category_title: 分类
 about_title: 关于
 tag_title: 标签
 recent_title: 最近文章
+toc_title: 目录
 search_hint: 搜索
-more: 查看全文
+more: 全文
+pv: 总访问量
+uv: 总访客数
+page_pv: 阅读
