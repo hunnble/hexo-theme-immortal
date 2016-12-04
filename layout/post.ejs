@@ -13,7 +13,7 @@
     <% }); %>
   </div>
 <% } %>
-<section id="post" class="card article z-depth-<%= theme.wrapperShadowLevel || 0 %>">
+<section id="post" class="card article z-depth-<%= theme.shadowLevel || 0 %>">
   <% if (theme.mode.layout === 'parallax') { %>
     <div class="card-panel z-depth-0 <%= theme.color %>-text">
       <div class="valign-wrapper">
@@ -48,7 +48,7 @@
       <% } %>
     </div>
   <% } else { %>
-    <header class="section <%= theme.color %> <%= theme.titleColor %>-text z-depth-<%= theme.titleShadowLevel || 0 %>">
+    <header class="section <%= theme.color %> <%= theme.titleColor %>-text z-depth-0">
       <div class="row container valign">
         <div class="col m12 l9">
           <h3 class="inline-title"><%- page.title || '' %></h3>
@@ -82,7 +82,7 @@
     </header>
   <% } %>
 
-  <div class="card-content z-depth-<%= theme.contentShadowLevel || 0 %>">
+  <div class="card-content z-depth-0">
 
     <% if (page.photos && page.photos.length > 0) { %>
       <% page.photos.forEach(function(photo, i) { %>
@@ -92,23 +92,21 @@
 
     <%- page.content %>
 
+    <% if (theme.duoshuo_shortname) { %>
+      <section class="comment" id="duoshuo">
+        <div class="ds-thread" data-thread-key="<%= page.layout %>-<%= page.slug %>" data-title="<%= page.title %>" data-url="<%= page.permalink %>"></div>
+        <script type="text/javascript">
+          var duoshuoQuery = { short_name:'<%= theme.duoshuo_shortname %>' };
+          var ds = document.createElement('script');
+          ds.type = 'text/javascript';
+          ds.async = true;
+          ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+          ds.charset = 'UTF-8';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+        </script>
+      </section>
+    <% } %>
+
   </div>
 
 </section>
-
-<% if (theme.duoshuo_shortname) { %>
-  <section class="comment" id="duoshuo">
-    <div class="ds-thread" data-thread-key="<%= page.layout %>-<%= page.slug %>" data-title="<%= page.title %>" data-url="<%= page.permalink %>"></div>
-    <script type="text/javascript">
-      var duoshuoQuery = {short_name:'<%= theme.duoshuo_shortname %>'};
-      (function() {
-        var ds = document.createElement('script');
-        ds.type = 'text/javascript';ds.async = true;
-        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-        ds.charset = 'UTF-8';
-        (document.getElementsByTagName('head')[0]
-         || document.getElementsByTagName('body')[0]).appendChild(ds);
-      })();
-    </script>
-  </section>
-<% } %>

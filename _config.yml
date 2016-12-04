@@ -59,7 +59,7 @@ widgits:
   search: true
   archive: true
   category: true
-  tag: 'cloud'
+  tag: true
   recent_posts: true
   recent_comments: true
   links: true
@@ -112,8 +112,8 @@ translucent: false
 background_blur: 1
 
 # color and subColor
-color: teal
-subColor: teal
+color: lighten-3 blue
+subColor: grey
 titleColor: white
 
 # tag colors
@@ -125,9 +125,7 @@ tagColors:
   - yellow
 
 # shadow level
-wrapperShadowLevel: 0
-titleShadowLevel: 5
-contentShadowLevel: 0
+shadowLevel: 0
 
 # mode
 # layout: parallax/default

@@ -4,9 +4,9 @@
 <% } %>
 
 <% if (site.posts.length > 0) { %>
-  <div id="recent-posts" class="article card-panel z-depth-<%= theme.wrapperShadowLevel || 0 %>">
+  <div id="recent-posts" class="article transparent">
     <% site.posts.sort('date', -1).skip((page.current - 1 || 0) * (config.per_page || theme.per_page)).limit(config.per_page || theme.per_page).each(function(post) { %>
-      <div class="section recent-post-item">
+      <div class="card-panel z-depth-0 recent-post-item">
         <span class="card-title">
           <% if (post.link) { %>
             <%- link_to(post.link, post.title, {

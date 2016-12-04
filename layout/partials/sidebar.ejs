@@ -1,21 +1,15 @@
-<aside class="col m2 push-m1 hide-on-med-and-down sidebar">
+<% if (theme.mode.layout && theme.mode.layout === 'parallax') { %>
+  <% var sidebarClass = 'col m3 push-m1 hide-on-med-and-down sidebar' %>
+<% } else { %>
+  <% var sidebarClass = 'col m3 push-m1 hide-on-med-and-down sidebar sidebar-default' %>
+<% } %>
+<aside class="<%= sidebarClass %>">
 
   <% if (theme.widgits) { %>
 
-    <% if (theme.widgits.archive && site.posts.length) { %>
-      <section class="card-panel <%= theme.color %>-text z-depth-<%= theme.wrapperShadowLevel %>">
-        <header class="subheader <%= theme.color %>-text">
-          <%= _p('recent_title') %>
-        </header>
-        <%- list_posts({
-          amount: theme.recent_count
-        }) %>
-      </section>
-    <% } %>
-
     <% if (theme.widgits.category && site.categories.length) { %>
-      <section class="card-panel <%= theme.color %>-text z-depth-<%= theme.wrapperShadowLevel %>">
-        <header class="subheader <%= theme.color %>-text">
+      <section class="card-panel <%= background %> <%= color %>-text z-depth-0">
+        <header class="subheader <%= titleColor %>-text">
           <%= _p('category_title') %>
         </header>
         <%- list_categories({
@@ -25,17 +19,31 @@
     <% } %>
 
     <% if (theme.widgits.tag && site.tags.length) { %>
-      <section class="card-panel <%= theme.color %>-text z-depth-<%= theme.wrapperShadowLevel %>">
-        <header class="subheader <%= theme.color %>-text">
+      <section class="card-panel <%= background %> <%= color %>-text z-depth-0">
+        <header class="subheader <%= titleColor %>-text">
           <%= _p('tag_title') %>
         </header>
         <% if (theme.widgits.tag === 'cloud') { %>
           <ul>
-            <li><%- tagcloud(site.tags, {}) %></li>
+            <li><%- tagcloud(site.tags, {
+              min_font: 12,
+              max_font: 28
+            }) %></li>
           </ul>
         <% } else { %>
           <%- list_tags({}) %>
         <% } %>
+      </section>
+    <% } %>
+
+    <% if (theme.widgits.archive && site.posts.length) { %>
+      <section class="card-panel <%= background %> <%= color %>-text z-depth-0">
+        <header class="subheader <%= titleColor %>-text">
+          <%= _p('recent_title') %>
+        </header>
+        <%- list_posts({
+          amount: theme.recent_count
+        }) %>
       </section>
     <% } %>
 

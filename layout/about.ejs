@@ -1,10 +1,16 @@
-<section class="card about z-depth-<%= theme.wrapperShadowLevel || 0 %>">
-  <header class="section center-align <%= theme.color %> <%= theme.titleColor %>-text z-depth-<%= theme.titleShadowLevel || 0 %>">
+<% if (theme.mode.layout && theme.mode.layout === 'parallax') { %>
+  <% var zDepth = 'z-depth-0' %>
+<% } else { %>
+  <% var zDepth = 'z-depth-' + theme.shadowLevel %>
+<% } %>
+
+<section class="card about <%= zDepth %>">
+  <header class="section center-align <%= theme.color %> <%= theme.titleColor %>-text z-depth-0">
     <img class="circle avatar-bg" src=<%= config.avatar || theme.avatar %>>
     <h3><%= config.author || theme.author %></h3>
     <div class="subheader section container left-align description"><%= config.description || theme.description %></div>
   </header>
-  <div class="card-content z-depth-<%= theme.contentShadowLevel || 0 %>">
+  <div class="card-content z-depth-0">
     <article class="container article">
       <%- page.content %>
     </article>

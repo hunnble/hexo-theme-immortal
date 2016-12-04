@@ -249,8 +249,10 @@ footer {
 
 #container-outer {
   margin-bottom: 0; }
-  #container-outer #container-inner > .card, #container-outer #container-inner > .card-panel {
-    margin-bottom: 0; }
+  #container-outer #container-inner {
+    margin-top: 1.75rem; }
+    #container-outer #container-inner > .card, #container-outer #container-inner > .card-panel {
+      margin-bottom: 0; }
 
 .container-outer {
   margin-top: 6rem; }
@@ -262,7 +264,8 @@ footer {
   text-indent: 2rem; }
 
 .recent-post-item {
-  margin-bottom: 2rem; }
+  margin-bottom: 2rem;
+  padding-bottom: 2rem; }
 
 .category {
   float: none !important;
@@ -273,8 +276,16 @@ footer {
   height: 100%; }
 
 .sidebar {
-  margin-top: 1.75rem; }
+  margin-top: 1.75rem;
+  margin-left: 6rem; }
   .sidebar .category-list-count, .sidebar .tag-list-count {
     float: right; }
   .sidebar .category-list-child {
     margin-left: .5rem; }
+  .sidebar .collection .collection-item {
+    padding: .5rem;
+    border-bottom: 0px solid #fff;
+    font-size: .8rem; }
+
+.sidebar-default {
+  margin-top: 2.25rem; }

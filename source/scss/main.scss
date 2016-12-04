@@ -98,8 +98,11 @@ footer {
 }
 #container-outer {
   margin-bottom: 0;
-  #container-inner>.card, #container-inner>.card-panel {
-    margin-bottom: 0;
+  #container-inner {
+    margin-top: 1.75rem;
+    &>.card, &>.card-panel {
+      margin-bottom: 0;
+    }
   }
 }
 .container-outer {
@@ -113,6 +116,7 @@ footer {
 }
 .recent-post-item {
   margin-bottom: 2rem;
+  padding-bottom: 2rem;
 }
 .category {
   float: none !important;
@@ -124,12 +128,21 @@ footer {
 }
 .sidebar {
   margin-top: 1.75rem;
+  margin-left: 6rem;
   .category-list-count, .tag-list-count {
     float: right;
   }
   .category-list-child {
     margin-left: .5rem;
   }
+  .collection .collection-item {
+    padding: .5rem;
+    border-bottom: 0px solid #fff;
+    font-size: .8rem;
+  }
+}
+.sidebar-default {
+  margin-top: 2.25rem;
 }
 
 @media only screen and (max-width : 992px) {

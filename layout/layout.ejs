@@ -74,12 +74,12 @@ pageTitle += ' [ ' + config.title + ' ]';
   <% } %>
 
   <%
-    var mainClass = 'col m8 s12';
+    var mainClass = 'col s12';
   %>
   <% if (theme.mode.column && theme.mode.column === 'single') { %>
-    <% mainClass += ' push-m2'; %>
+    <% mainClass += ' m8 push-m2'; %>
   <% } else { %>
-    <% mainClass += ' push-m1'; %>
+    <% mainClass += ' m7 push-m1'; %>
   <% } %>
 
   <div class="row <%= translucent %>">
@@ -95,7 +95,19 @@ pageTitle += ' [ ' + config.title + ' ]';
 
     <% if (!theme.mode.column || theme.mode.column !== 'single') { %>
 
-      <%- partial('partials/sidebar') %>
+      <% if (theme.mode.layout && theme.mode.layout === 'parallax') { %>
+        <%- partial('partials/sidebar', {
+          background: 'transparent',
+          titleColor: theme.color,
+          color: theme.subColor
+        }) %>
+      <% } else { %>
+        <%- partial('partials/sidebar', {
+          background: 'transparent',
+          titleColor: theme.titleColor,
+          color: theme.subColor
+        }) %>
+      <% } %>
 
     <% } %>
 
