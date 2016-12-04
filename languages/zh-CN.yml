@@ -1,9 +1,8 @@
 home_title: 主页
-archive_title: 文章
-category_title: 归档
+archive_title: 归档
+category_title: 分类
 about_title: 关于
 tag_title: 标签
+recent_title: 最近文章
 search_hint: 搜索
 more: 查看全文
-date_hint: 创建于
-update_hint: 更新于

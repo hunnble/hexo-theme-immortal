@@ -86,7 +86,7 @@
 
     <% if (page.photos && page.photos.length > 0) { %>
       <% page.photos.forEach(function(photo, i) { %>
-        <a class="fancybox" rel="group" href="<%= photo %>"><img class="fancybox-small" src="<%= photo %>" alt="" /></a>
+        <a class="fancybox" rel="group" href="<%= photo %>"><img class="fancybox-small hoverable" src="<%= photo %>" alt="" /></a>
       <% }); %>
     <% } %>
 

@@ -57,8 +57,9 @@ friends:
 #widgits
 widgits:
   search: true
+  archive: true
   category: true
-  tag: true
+  tag: 'cloud'
   recent_posts: true
   recent_comments: true
   links: true
@@ -97,9 +98,12 @@ fancybox: true
 prev_num: 2
 next_num: 2
 
+# count of recent posts
+recent_count: 10
+
 # Date / Time format
-date_format: YYYY MMM
-time_format: Do Ah:m:ss
+date_format: YYYY MMM Do
+time_format: Ah:m:ss
 
 # translucent
 translucent: false
@@ -108,8 +112,8 @@ translucent: false
 background_blur: 1
 
 # color and subColor
-color: darken-4 deep-purple
-subColor: deep-purple
+color: teal
+subColor: teal
 titleColor: white
 
 # tag colors
@@ -130,4 +134,4 @@ contentShadowLevel: 0
 # column: single/default
 mode:
   layout: parallax
-  column: single
+  column: default

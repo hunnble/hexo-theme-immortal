@@ -95,24 +95,7 @@ pageTitle += ' [ ' + config.title + ' ]';
 
     <% if (!theme.mode.column || theme.mode.column !== 'single') { %>
 
-      <aside class="col m2 push-m1 hide-on-med-and-down">
-
-        <% if (theme.widgits) { %>
-          <div class="card-panel <%= theme.color %>-text">
-            <% if (theme.widgits.category && site.categories.length) { %>
-              <%- list_categories({
-                'class': 'collection'
-              }) %>
-            <% } %>
-          </div>
-          <div class="card-panel <%= theme.color %>-text">
-            <% if (theme.widgits.tag && site.tags.length) { %>
-              <%- list_tags({}) %>
-            <% } %>
-          </div>
-        <% } %>
-
-      </aside>
+      <%- partial('partials/sidebar') %>
 
     <% } %>
 

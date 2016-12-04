@@ -1,0 +1,44 @@
+<aside class="col m2 push-m1 hide-on-med-and-down sidebar">
+
+  <% if (theme.widgits) { %>
+
+    <% if (theme.widgits.archive && site.posts.length) { %>
+      <section class="card-panel <%= theme.color %>-text z-depth-<%= theme.wrapperShadowLevel %>">
+        <header class="subheader <%= theme.color %>-text">
+          <%= _p('recent_title') %>
+        </header>
+        <%- list_posts({
+          amount: theme.recent_count
+        }) %>
+      </section>
+    <% } %>
+
+    <% if (theme.widgits.category && site.categories.length) { %>
+      <section class="card-panel <%= theme.color %>-text z-depth-<%= theme.wrapperShadowLevel %>">
+        <header class="subheader <%= theme.color %>-text">
+          <%= _p('category_title') %>
+        </header>
+        <%- list_categories({
+          depth: 1
+        }) %>
+      </section>
+    <% } %>
+
+    <% if (theme.widgits.tag && site.tags.length) { %>
+      <section class="card-panel <%= theme.color %>-text z-depth-<%= theme.wrapperShadowLevel %>">
+        <header class="subheader <%= theme.color %>-text">
+          <%= _p('tag_title') %>
+        </header>
+        <% if (theme.widgits.tag === 'cloud') { %>
+          <ul>
+            <li><%- tagcloud(site.tags, {}) %></li>
+          </ul>
+        <% } else { %>
+          <%- list_tags({}) %>
+        <% } %>
+      </section>
+    <% } %>
+
+  <% } %>
+
+</aside>

@@ -120,7 +120,16 @@ footer {
 }
 .fancybox-small {
   width: 15vw;
-  height: 15vw;
+  height: 100%;
+}
+.sidebar {
+  margin-top: 1.75rem;
+  .category-list-count, .tag-list-count {
+    float: right;
+  }
+  .category-list-child {
+    margin-left: .5rem;
+  }
 }
 
 @media only screen and (max-width : 992px) {

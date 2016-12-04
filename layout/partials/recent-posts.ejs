@@ -18,12 +18,16 @@
               external: theme.external_link,
               class: 'flow-text ' + theme.color + '-text inline-title'
             }) %>
+          <% } else { %>
+            <%- link_to('#', '', {
+              external: theme.external_link,
+              class: 'flow-text inline-title transparent-text'
+            }) %>
           <% } %>
 
           <% if (post.date) { %>
-            <time datetime="<%= post.date.toJSON() %>" class="<%= theme.subColor %>-text inline-title">
+            <time datetime="<%= post.date.toJSON() %>" class="right <%= theme.subColor %>-text inline-title">
               <%= date(post.date, theme.date_format || config.date_format) %>
-              <%= date(post.date, theme.time_format || config.time_format) %>
             </time>
           <% } %>
           <% if (post.categories && post.categories.length > 0) { %>

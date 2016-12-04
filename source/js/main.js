@@ -1,16 +1,30 @@
 $(document).ready(function() {
 
-  $('.parallax').parallax();
+  var parallax = 500;
+
   $('.collapsible').collapsible();
   $('#side-nav-switcher').sideNav();
 
+  scroll(parallax);
   article();
+  sidebar();
   // links();
   highlight();
   post();
   fancybox();
 
 });
+
+function scroll(offset) {
+  if ('undefined' === $('.parallax-container')) {
+    return false;
+  }
+  $('.parallax-container').css({
+    'height': offset
+  });
+  $('.parallax').parallax();
+
+}
 
 function links() {
   $('.fixed-action-btn').openFAB();
@@ -48,10 +62,12 @@ function post() {
   //     full_width: true
   //   });
 
-  if (!$('.toc').offset()) {
+  var $toc = $('.toc');
+
+  if (!$toc.offset()) {
     return false;
   }
-  $('.toc').pushpin({ offset: $('.toc').offset().top });
+  $toc.pushpin({ offset: $toc.offset().top });
 
   var hash = window.location.hash;
   var pathList = $('.toc li a');
@@ -66,17 +82,30 @@ function post() {
 }
 
 function article() {
-  var article = $('.article');
-  article.find('.card-content a').addClass('link');
-  article.find('.card-content ul').addClass('collection');
-  article.find('.card-content ol').addClass('collection');
-  article.find('.card-content li').addClass('collection-item');
-  article.find('.card-content table').addClass('centered responsive-table');
-  article.find('.card-content figure table').removeClass('centered responsive-table');
+  var $article = $('.article');
+  $article.find('.card-content a').addClass('link');
+  $article.find('.card-content ul').addClass('collection');
+  $article.find('.card-content ol').addClass('collection');
+  $article.find('.card-content li').addClass('collection-item');
+  $article.find('.card-content table').addClass('centered responsive-table');
+  $article.find('.card-content figure table').removeClass('centered responsive-table');
 }
 
 function fancybox() {
   if ('undefined' !== $(".fancybox")) {
     $(".fancybox").fancybox();
   }
+}
+
+function sidebar() {
+  var $sidebar = $('.sidebar');
+
+  if ('undefined' === $sidebar) {
+    return false;
+  }
+
+  $sidebar.find('ul').addClass('collection');
+  $sidebar.find('ol').addClass('collection');
+  $sidebar.find('li').addClass('collection-item');
+
 }

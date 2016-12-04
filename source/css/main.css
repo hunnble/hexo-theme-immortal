@@ -270,4 +270,11 @@ footer {
 
 .fancybox-small {
   width: 15vw;
-  height: 15vw; }
+  height: 100%; }
+
+.sidebar {
+  margin-top: 1.75rem; }
+  .sidebar .category-list-count, .sidebar .tag-list-count {
+    float: right; }
+  .sidebar .category-list-child {
+    margin-left: .5rem; }
