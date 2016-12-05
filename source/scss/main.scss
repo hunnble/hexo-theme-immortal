@@ -155,9 +155,11 @@ footer {
   .category-list-child {
     margin-left: .5rem;
   }
-  .collection .collection-item {
-    padding: .5rem;
-    font-size: .8rem;
+  .collection {
+    .collection-item {
+      padding: .5rem;
+      font-size: .8rem;
+    }
   }
   i {
     margin: 0 !important;
@@ -176,6 +178,11 @@ footer {
   margin-bottom: 2rem;
   .links {
     overflow: hidden;
+  }
+}
+.sidebar-profile {
+  .collection-item {
+    display: inline-block;
   }
 }
 .toc {

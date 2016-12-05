@@ -1,24 +1,51 @@
+<% if (page.posts.length > 0) { %>
+  <div id="category" class="card-panel z-depth-0 center-align <%= theme.subColor %>-text">
 
-<div id="category">
-  <h1><%=page.category%></h1>
-  <% page.posts.each(function(article) { %>
-    <div class="category-item">
-      <% if (article.link) { %>
-        <a href="<%=url_for(article.link)%>" target="_blank">
-          <%=article.title || 'No Title'%>
-        </a>
-      <% } else { %>
-        <a href="<%=url_for(article.path)%>">
-          <%=article.title || 'No Title'%>
-        </a>
-      <% } %>
-      <time datetime="<%=date_xml(article.date)%>">
-        <%=date(article.date)%>
-      </time>
-    </div>
-  <% }); %>
-</div>
+    <h3 class="flow-text"><%= page.category %></h3>
 
-<%- partial('partials/pagination', {
-  'name': 'category'
-}) %>
+      <ul class="collection">
+
+        <% page.posts.sort('date', -1).each(function(post) { %>
+
+          <li class="collection-item">
+
+            <% if (post.date) { %>
+              <time datetime="<%= post.date.toJSON() %>" class="inline-title">
+                <%= date(post.date, theme.date_format || config.date_format) %>
+              </time>
+            <% } %>
+
+            <!-- <% post.tags.each(function (tag, index) { %>
+              <span class="new badge <%= theme.tagColors[index % post.tags.length] %>" data-badge-caption="">
+                <%- link_to(url_for(tag.path), '#' + tag.name, {
+                  external: theme.external_link,
+                  class: (theme.titleColor || white) + '-text'
+                }) %>
+              </span>
+            <% }); %> -->
+
+            <% if (post.link) { %>
+              <%- link_to(post.link, post.title, {
+                external: theme.external_link,
+                class: 'flow-text ' + theme.contentColor + '-text inline-title'
+              }) %>
+            <% } else if (post.title) { %>
+              <%- link_to(config.root + post.path, post.title, {
+                external: theme.external_link,
+                class: 'flow-text ' + theme.contentColor + '-text inline-title'
+              }) %>
+            <% } else { %>
+              <%- link_to('#', '', {
+                external: theme.external_link,
+                class: 'flow-text inline-title transparent-text'
+              }) %>
+            <% } %>
+
+          </li>
+
+        <% }); %>
+
+      </ul>
+
+  </div>
+<% } %>

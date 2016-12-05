@@ -334,6 +334,9 @@ footer {
   .home-profile .links {
     overflow: hidden; }
 
+.sidebar-profile .collection-item {
+  display: inline-block; }
+
 .toc ol > li {
   margin-left: .5rem;
   list-style-type: none; }

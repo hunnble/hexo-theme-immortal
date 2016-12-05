@@ -13,38 +13,38 @@ links:
     href: https://github.com/hunnble
     icon: /images/github.png
     color: black
-  weibo:
-    href: http://www.weibo.com/5597091497/profile?topnav=1&wvr=6
-    icon: /images/weibo.png
-    color: red
+  # weibo:
+  #   href: http://www.weibo.com/5597091497/profile?topnav=1&wvr=6
+  #   icon: /images/weibo.png
+  #   color: red
   zhihu:
     href: https://www.zhihu.com/people/han-te-79
     icon: /images/zhihu.png
     color: blue
-  douban:
-    href: https://book.douban.com/
-    icon: /images/douban.png
-    color: green
+  # douban:
+  #   href: https://book.douban.com/
+  #   icon: /images/douban.png
+  #   color: green
   mail:
     href: mailto:hante_hunter@163.com
     icon: /images/mail.png
     color: teal
-  twitter:
-    href: https://twitter.com/
-    icon: /images/twitter.png
-    color: blue
-  facebook:
-    href: https://www.facebook.com
-    icon: /images/facebook.png
-    color: indigo lighten-1
-  google:
-    href: http://www.google.com
-    icon: /images/google.png
-    color: green
-  stackoverflow:
-    href: https://stackoverflow.com/
-    icon: /images/stackoverflow.png
-    color: orange lighten-3
+  # twitter:
+  #   href: https://twitter.com/
+  #   icon: /images/twitter.png
+  #   color: blue
+  # facebook:
+  #   href: https://www.facebook.com
+  #   icon: /images/facebook.png
+  #   color: indigo lighten-1
+  # google:
+  #   href: http://www.google.com
+  #   icon: /images/google.png
+  #   color: green
+  # stackoverflow:
+  #   href: https://stackoverflow.com/
+  #   icon: /images/stackoverflow.png
+  #   color: orange lighten-3
 
 # rss
 rss: /atom.xml
@@ -114,8 +114,9 @@ background_blur: false
 
 # color and subColor
 color: lighten-3 blue
-subColor: grey
+subColor: lighten-4 blue-grey
 titleColor: white
+contentColor: black
 
 # tag colors
 tagColors:

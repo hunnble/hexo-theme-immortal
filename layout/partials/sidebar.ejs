@@ -9,13 +9,12 @@
 
     <% if (theme.widgits.profile) { %>
       <section class="card-panel <%= background %> <%= color %>-text z-depth-0">
-        <header class="subheader <%= titleColor %>-text center-align">
+        <header class="subheader center-align">
           <img class="circle avatar-bg" src=<%= config.avatar || theme.avatar %>>
         </header>
-        <h4 class="<%= theme.subColor %>-text center-align"><%= config.author %></h4>
-        <h5 class="<%= theme.subColor %>-text description"><%= config.description %></h5>
+        <h4 class="<%= titleColor %>-text center-align"><%= config.author %></h4>
         <div class="links">
-          <ul>
+          <ul class="center-align sidebar-profile">
             <% if (config.external_link) { %>
               <% var target = '_blank' %>
             <% } else { %>
@@ -23,7 +22,7 @@
             <% } %>
             <% Object.keys(theme.links).forEach(function(key, index) { %>
               <% if (theme.links[key].href && theme.links[key].icon) { %>
-                <li class="left">
+                <li>
                   <a target="<%= target %>" class="link-wrapper btn-floating <%= theme.links[key].color || theme.color %> center-align waves-effect z-depth-0 %>" href=<%= theme.links[key].href %>>
                     <img class="link-img" src=<%= theme.links[key].icon %> alt=<%= key %>>
                   </a>
@@ -32,13 +31,14 @@
             <% }); %>
           </ul>
         </div>
+        <h5 class=" description"><%= config.description %></h5>
       </section>
     <% } %>
 
     <% if (theme.widgits.category && site.categories.length) { %>
-      <section class="card-panel <%= background %> <%= theme.subColor %>-text z-depth-0">
-        <i class="material-icons left">redeem</i>
-        <header class="subheader">
+      <section class="card-panel <%= background %> <%= color %>-text z-depth-0">
+        <i class="material-icons left <%= titleColor %>-text">redeem</i>
+        <header class="subheader <%= titleColor %>-text">
           <%= _p('category_title') %>
         </header>
         <div class="divider"></div>
@@ -50,7 +50,7 @@
 
     <% if (theme.widgits.tag && site.tags.length) { %>
       <section class="card-panel <%= background %> <%= color %>-text z-depth-0">
-        <i class="material-icons left">label_outline</i>
+        <i class="material-icons left <%= titleColor %>-text">label_outline</i>
         <header class="subheader <%= titleColor %>-text">
           <%= _p('tag_title') %>
         </header>
@@ -70,7 +70,7 @@
 
     <% if (theme.widgits.recent_posts && site.posts.length) { %>
       <section class="card-panel <%= background %> <%= color %>-text z-depth-0">
-        <i class="material-icons left">launch</i>
+        <i class="material-icons left <%= titleColor %>-text">launch</i>
         <header class="subheader <%= titleColor %>-text">
           <%= _p('recent_title') %>
         </header>

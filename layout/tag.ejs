@@ -1,31 +1,53 @@
 <% if (page.posts.length > 0) { %>
-  <div id="tag" class="card-panel">
-    <h3 class="flow-text <%= theme.color %>-text"><%=page.tag%></h3>
-    <% page.posts.sort('date', -1).each(function(post) { %>
-      <div class="section recent-post-item">
-        <span class="card-title <%= theme.color %>-text text-darken-4">
-          <a href=<%= config.root + post.path %> class="flow-text <%= theme.color %>-text"><%=post.title%></a>
-          <% if (post.date) { %>
-            <time datetime="<%= post.date.toJSON() %>" class="<%= theme.subColor %>-text">
-              <%= date(post.date, 'MMM DD, YYYY') %>
-            </time>
-          <% } %>
-          <% post.categories.each(function (category) { %>
-            <span class="new badge" data-badge-caption=""></span>
-          <% }); %>
-        </span>
-        <div class="divider"></div>
-        <div class="card-content">
-          <div class="section">
-            <%- post.excerpt %>
-          </div>
-        </div>
-        <div class="card-action section">
-          <% post.tags.each(function (tag, index) { %>
-            <span class="new badge <%= theme.tagColors[index % post.tags.length] %>" data-badge-caption=""><a class="white-text" href=<%= url_for(tag.path) %>><%= tag.name %></a></span>
-          <% }); %>
-        </div>
-      </div>
-    <% }); %>
+  <div id="tag" class="card-panel z-depth-0 center-align <%= theme.subColor %>-text">
+
+    <h3 class="flow-text">#<%= page.tag %></h3>
+
+      <ul class="collection">
+
+        <% page.posts.sort('date', -1).each(function(post) { %>
+
+          <li class="collection-item">
+
+            <% if (post.date) { %>
+              <time datetime="<%= post.date.toJSON() %>" class="inline-title">
+                <%= date(post.date, theme.date_format || config.date_format) %>
+              </time>
+            <% } %>
+
+            <!-- <% post.tags.each(function (tag, index) { %>
+              <span class="new badge <%= theme.tagColors[index % post.tags.length] %>" data-badge-caption="">
+                <%- link_to(url_for(tag.path), '#' + tag.name, {
+                  external: theme.external_link,
+                  class: (theme.titleColor || white) + '-text'
+                }) %>
+              </span>
+            <% }); %> -->
+
+            <% if (post.link) { %>
+              <%- link_to(post.link, post.title, {
+                external: theme.external_link,
+                class: 'flow-text ' + theme.contentColor + '-text inline-title'
+              }) %>
+            <% } else if (post.title) { %>
+              <%- link_to(config.root + post.path, post.title, {
+                external: theme.external_link,
+                class: 'flow-text ' + theme.contentColor + '-text inline-title'
+              }) %>
+            <% } else { %>
+              <%- link_to('#', '', {
+                external: theme.external_link,
+                class: 'flow-text inline-title transparent-text'
+              }) %>
+            <% } %>
+
+
+
+          </li>
+
+        <% }); %>
+
+      </ul>
+
   </div>
 <% } %>
