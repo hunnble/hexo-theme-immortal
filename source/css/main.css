@@ -71,6 +71,9 @@ blockquote {
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased; }
 
+.badge:hover {
+  opacity: .5; }
+
 .row .col {
   padding: 0; }
 
@@ -144,6 +147,9 @@ figure.highlight {
   margin: 0.5rem;
   float: left; }
 
+.about > header {
+  padding: 1rem; }
+
 .blur-sm {
   -webkit-filter: blur(5px);
   -moz-filter: blur(5px);
@@ -184,22 +190,22 @@ figure.highlight {
   font-size: 1.25rem; }
 
 h1 {
-  font-size: 3.75rem; }
+  font-size: 3.1rem; }
 
 h2 {
-  font-size: 3.15rem; }
+  font-size: 2.6rem; }
 
 h3 {
-  font-size: 2.55rem; }
+  font-size: 2.1rem; }
 
 h4 {
-  font-size: 1.95rem; }
+  font-size: 1.6rem; }
 
 h5 {
-  font-size: 1.35rem; }
+  font-size: 1.1rem; }
 
 h6 {
-  font-size: 0.75rem; }
+  font-size: 0.6rem; }
 
 html {
   font-family: GillSans, Calibri, Trebuchet, STKaiti, KaiTi, sans-serif; }
@@ -214,6 +220,9 @@ main {
 
 footer {
   margin-top: 1.5rem !important; }
+
+.clear-float {
+  clear: both; }
 
 .background-wrapper {
   position: fixed;
@@ -233,7 +242,7 @@ footer {
 .link-img {
   width: 1rem;
   height: 1rem;
-  margin-top: 0.75rem; }
+  margin-top: 0.8125rem; }
 
 .pinned {
   z-index: 1; }
@@ -245,7 +254,8 @@ footer {
 .article {
   line-height: 1.8rem; }
   .article .link {
-    text-decoration: underline; }
+    text-decoration: underline;
+    word-break: break-all; }
   .article blockquote footer {
     font-style: italic; }
     .article blockquote footer p {
@@ -264,10 +274,8 @@ footer {
 
 #container-outer {
   margin-bottom: 0; }
-  #container-outer #container-inner {
-    margin-top: 1.75rem; }
-    #container-outer #container-inner > .card, #container-outer #container-inner > .card-panel {
-      margin-bottom: 0; }
+  #container-outer #container-inner > .card, #container-outer #container-inner > .card-panel {
+    margin-bottom: 0; }
 
 .container-outer {
   margin-top: 6rem; }
@@ -279,6 +287,7 @@ footer {
   text-indent: 2rem; }
 
 .recent-post-item {
+  margin-top: 0;
   margin-bottom: 2rem;
   padding-bottom: 2rem; }
 
@@ -289,6 +298,15 @@ footer {
 .fancybox-small {
   width: 15vw;
   height: 100%; }
+
+.links li {
+  border: none !important;
+  -webkit-transition: opacity .5s;
+  -moz-transition: opacity .5s;
+  -ms-transition: opacity .5s;
+  transition: opacity .5s; }
+  .links li:hover {
+    opacity: .8; }
 
 .sidebar {
   margin-top: 1.75rem;
@@ -307,6 +325,14 @@ footer {
 
 .sidebar-default {
   margin-top: 2.25rem; }
+
+.invade {
+  margin-top: -6rem; }
+
+.home-profile {
+  margin-bottom: 2rem; }
+  .home-profile .links {
+    overflow: hidden; }
 
 .toc ol > li {
   margin-left: .5rem;

@@ -13,10 +13,10 @@
     <% }); %>
   </div>
 <% } %>
-<section id="post" class="card article z-depth-<%= theme.shadowLevel || 0 %>">
+<section id="post" class="card article z-depth-0">
   <% if (theme.mode.layout === 'parallax') { %>
     <div class="card-panel z-depth-0 <%= theme.subColor %>-text">
-
+      <h1 class="<%= theme.color %>-text"><%- page.title || '' %></h1>
       <div class="valign-wrapper">
         <i class="material-icons valign">query_builder</i>&nbsp
         <time datetime="<%= page.date.toJSON() %>" class="valign">

@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  var parallaxOffset = 500;
+  var parallaxOffset = $('.parallax-container').height();
 
   $('.collapsible').collapsible();
   $('#side-nav-switcher').sideNav();
@@ -26,7 +26,7 @@ function scroll(offset) {
 
   Materialize.scrollFire({
     selector: 'aside section:eq(0)',
-    offset: 20,
+    offset: offset,
     callback: function() {
       console.log(1);
     }

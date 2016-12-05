@@ -54,14 +54,14 @@ pageTitle += ' [ ' + config.title + ' ]';
       'blur-' + blurLevels[theme.background_blur - 1] :
       '';
 %>
-<% if (theme.mode.layout && theme.mode.layout === 'parallax') { %>
-  <%- partial('partials/parallax.ejs') %>
-  <% var containerOuterClass = '' %>
-<% } else { %>
+<% if (!theme.mode.layout || theme.mode.layout !== 'parallax') { %>
   <div class="background-wrapper <%= blurLevel %>">
     <img src="<%= background %>">
   </div>
   <% var containerOuterClass = 'container-outer' %>
+<% } else { %>
+  <%- partial('partials/parallax.ejs') %>
+  <% var containerOuterClass = '' %>
 <% } %>
 </div>
 
@@ -73,13 +73,11 @@ pageTitle += ' [ ' + config.title + ' ]';
     <% var translucent = '' %>
   <% } %>
 
-  <%
-    var mainClass = 'col s12 push-s0';
-  %>
-  <% if (theme.mode.column && theme.mode.column === 'single') { %>
-    <% mainClass += ' m8 push-m2'; %>
+  <% var mainClass = 'col s12 m10 push-m1'; %>
+  <% if (theme.widgits && _.some(theme.widgits, Boolean) && is_home()) { %>
+    <% mainClass += ' l7 push-l1'; %>
   <% } else { %>
-    <% mainClass += ' m7 push-m1'; %>
+    <% mainClass += ' l8 push-l2'; %>
   <% } %>
 
   <div class="row <%= translucent %>">
@@ -93,7 +91,7 @@ pageTitle += ' [ ' + config.title + ' ]';
       <% } %>
     </div>
 
-    <% if (!theme.mode.column || theme.mode.column !== 'single') { %>
+    <% if (theme.widgits && _.some(theme.widgits, Boolean) && is_home()) { %>
 
       <% if (theme.mode.layout && theme.mode.layout === 'parallax') { %>
         <%- partial('partials/sidebar', {

@@ -4,3 +4,6 @@
 .about .icon {
   margin: 0.5rem;
   float: left; }
+
+.about > header {
+  padding: 1rem; }

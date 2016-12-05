@@ -110,7 +110,7 @@ time_format: Ah:m:ss
 translucent: false
 
 # blur style for background, can be set in 1, 2, 3 or false
-background_blur: 1
+background_blur: false
 
 # color and subColor
 color: lighten-3 blue
@@ -130,7 +130,8 @@ shadowLevel: 0
 
 # mode
 # layout: parallax/default
-# column: single/default
 mode:
   layout: parallax
-  column: default
+  # column: default
+
+parallax_height: 400

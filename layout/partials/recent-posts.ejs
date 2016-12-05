@@ -5,9 +5,26 @@
 
 <% if (site.posts.length > 0) { %>
   <div id="recent-posts" class="article transparent">
+
+    <section class="invade valign-wrapper card-panel home-profile hide-on-small-only hide-on-large-only <%= theme.color %> <%= theme.titleColor %>-text z-depth-<%= theme.shadowLevel %>">
+      <img class="valign circle avatar-md" src=<%= config.avatar || theme.avatar %>>
+      <div class="card-panel z-depth-0 transparent valign">
+        <h3><%= config.title %></h3>
+        <h5><%= config.subtitle %></h5>
+      </div>
+    </section>
+
+    <section class="valign-wrapper home-profile hide-on-med-and-up <%= theme.color %> <%= theme.titleColor %>-text">
+      <div class="card-panel z-depth-0 transparent valign">
+        <h1><%= config.title %></h1>
+        <h5><%= config.subtitle %></h5>
+      </div>
+    </section>
+
     <% site.posts.sort('date', -1).skip((page.current - 1 || 0) * (config.per_page || theme.per_page)).limit(config.per_page || theme.per_page).each(function(post) { %>
       <div class="card-panel z-depth-0 recent-post-item">
-        <span class="card-title">
+
+        <div class="card-title">
           <% if (post.link) { %>
             <%- link_to(post.link, post.title, {
               external: theme.external_link,
@@ -29,7 +46,9 @@
             <time datetime="<%= post.date.toJSON() %>" class="right <%= theme.subColor %>-text inline-title">
               <%= date(post.date, theme.date_format || config.date_format) %>
             </time>
+            <div class="clear-float"></div>
           <% } %>
+
           <% if (post.categories && post.categories.length > 0) { %>
             <div class="valign-wrapper section">
               <% var pathname = ''; %>
@@ -46,8 +65,11 @@
               <% }); %>
             </div>
           <% } %>
-        </span>
+
+        </div>
+
         <div class="divider"></div>
+
         <div class="card-content">
           <div class="section">
             <% if (post.excerpt) { %>

@@ -11,15 +11,11 @@
       '';
 %>
 
-<div class="parallax-container valign-wrapper">
+<div class="parallax-container valign-wrapper hide-on-small-only" style="height: <%= theme.parallax_height %>px">
   <% if (is_home()) { %>
-    <div class="container valign center-align <%= theme.titleColor %>-text">
+    <div class="container hide-on-med-and-down valign center-align <%= theme.titleColor %>-text">
       <h1 class=""><%= config.title %></h1>
       <h5><%= config.subtitle %></h5>
-    </div>
-  <% } else if (is_post()) { %>
-    <div class="container valign center-align <%= theme.titleColor %>-text">
-      <h1 class=""><%- page.title || '' %></h1>
     </div>
   <% } %>
   <div class="parallax <%= blurLevel %>"><img src="<%= background %>"></div>

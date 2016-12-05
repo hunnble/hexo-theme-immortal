@@ -14,11 +14,16 @@
           }) %>
         </p>
         <div class="section">
+          <% if (config.external_link) { %>
+            <% var target = '_blank' %>
+          <% } else { %>
+            <% var target = '_self' %>
+          <% } %>
           <ul>
             <% Object.keys(theme.links).forEach(function(key, index) { %>
               <% if (theme.links[key].href && theme.links[key].icon) { %>
                 <li class="left">
-                  <a class="link-wrapper btn-floating <%= theme.links[key].color || theme.color %> center-align waves-effect %>" href=<%= theme.links[key].href %>>
+                  <a target="<%= target %>" class="link-wrapper btn-floating <%= theme.links[key].color || theme.color %> center-align waves-effect %>" href=<%= theme.links[key].href %>>
                     <img class="link-img" src=<%= theme.links[key].icon %> alt=<%= key %>>
                   </a>
                 </li>
@@ -28,11 +33,16 @@
         </div>
       </div>
       <div class="col l4 offset-l2 s12">
-        <h5 class="white-text">Links</h5>
+        <h6 class="<%= theme.titleColor %>-text"><%= _p('friend_title') %></h6>
         <% if (theme.friends) { %>
           <ul>
             <% Object.keys(theme.friends).forEach(function (key) { %>
-              <li><a class="<%= theme.titleColor %>-text" href=<%= theme.friends[key] %>><%= key %></a></li>
+              <li>
+                <%- link_to(theme.friends[key], key, {
+                  class: theme.titleColor + '-text',
+                  external: config.external_link
+                }) %>
+              </li>
             <% }); %>
           </ul>
         <% } %>

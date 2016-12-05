@@ -5,27 +5,43 @@
 <% } %>
 <aside class="<%= sidebarClass %>">
 
-  <% if (is_post()) { %>
-    <div class="toc card-panel <%= background %> <%= color %>-text z-depth-0 collection">
-      <i class="material-icons right">subject</i>
-      <header class="subheader <%= titleColor %>-text">
-        <%= _p('toc_title') %>
-      </header>
-      <%- toc(page.content, {
-        'class': 'table-of-contents collection-item',
-        'list_number': false
-      }) %>
-    </div>
-  <% } %>
-
   <% if (theme.widgits) { %>
 
-    <% if (theme.widgits.category && site.categories.length) { %>
+    <% if (theme.widgits.profile) { %>
       <section class="card-panel <%= background %> <%= color %>-text z-depth-0">
-        <i class="material-icons right">markunread_mailbox</i>
-        <header class="subheader <%= titleColor %>-text">
+        <header class="subheader <%= titleColor %>-text center-align">
+          <img class="circle avatar-bg" src=<%= config.avatar || theme.avatar %>>
+        </header>
+        <h4 class="<%= theme.subColor %>-text center-align"><%= config.author %></h4>
+        <h5 class="<%= theme.subColor %>-text description"><%= config.description %></h5>
+        <div class="links">
+          <ul>
+            <% if (config.external_link) { %>
+              <% var target = '_blank' %>
+            <% } else { %>
+              <% var target = '_self' %>
+            <% } %>
+            <% Object.keys(theme.links).forEach(function(key, index) { %>
+              <% if (theme.links[key].href && theme.links[key].icon) { %>
+                <li class="left">
+                  <a target="<%= target %>" class="link-wrapper btn-floating <%= theme.links[key].color || theme.color %> center-align waves-effect z-depth-0 %>" href=<%= theme.links[key].href %>>
+                    <img class="link-img" src=<%= theme.links[key].icon %> alt=<%= key %>>
+                  </a>
+                </li>
+              <% } %>
+            <% }); %>
+          </ul>
+        </div>
+      </section>
+    <% } %>
+
+    <% if (theme.widgits.category && site.categories.length) { %>
+      <section class="card-panel <%= background %> <%= theme.subColor %>-text z-depth-0">
+        <i class="material-icons left">redeem</i>
+        <header class="subheader">
           <%= _p('category_title') %>
         </header>
+        <div class="divider"></div>
         <%- list_categories({
           depth: 1
         }) %>
@@ -34,10 +50,11 @@
 
     <% if (theme.widgits.tag && site.tags.length) { %>
       <section class="card-panel <%= background %> <%= color %>-text z-depth-0">
-        <i class="material-icons right">label</i>
+        <i class="material-icons left">label_outline</i>
         <header class="subheader <%= titleColor %>-text">
           <%= _p('tag_title') %>
         </header>
+        <div class="divider"></div>
         <% if (theme.widgits.tag === 'cloud') { %>
           <ul>
             <li><%- tagcloud(site.tags, {
@@ -53,10 +70,11 @@
 
     <% if (theme.widgits.recent_posts && site.posts.length) { %>
       <section class="card-panel <%= background %> <%= color %>-text z-depth-0">
-        <i class="material-icons right">input</i>
+        <i class="material-icons left">launch</i>
         <header class="subheader <%= titleColor %>-text">
           <%= _p('recent_title') %>
         </header>
+        <div class="divider"></div>
         <%- list_posts({
           amount: theme.recent_count
         }) %>
