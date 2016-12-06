@@ -21,6 +21,7 @@ pageTitle += ' [ ' + config.title + ' ]';
       <link rel="application/font-woff2" href="<%=url%>">
     <% }); %>
   <% } %>
+  <%- favicon_tag(theme.favicon) %>
   <% if (theme.highlight.enable) { %>
     <% if (!theme.highlight.style || theme.highlight.style === 'default') { %>
       <link rel="stylesheet" href='/css/default_highlight.min.css'>
@@ -39,13 +40,27 @@ pageTitle += ' [ ' + config.title + ' ]';
 </head>
 <body>
 
-<%- partial('partials/header') %>
-<%- partial('partials/sideNav') %>
+<%- partial('partials/header', {}, {
+  cache: true
+}) %>
+<%- partial('partials/sideNav', {}, {
+  cache: true
+}) %>
 
-<% if (page.photos && page.photos.length > 0) { %>
-  <% var background = page.photos[0]; %>
-<% } else { %>
-  <% var background = theme.background; %>
+<% if (!theme.images || theme.images.length === 0) { %>
+  <% var background = ''; %>
+<% } else if (is_post() && page.background) { %>
+  <% var background = page.background %>
+<% } else if (is_home()) { %>
+  <% var background = theme.images.home; %>
+<% } else if (is_archive()) { %>
+  <% var background = theme.images.archive; %>
+<% } else if (is_category()) { %>
+  <% var background = theme.images.category; %>
+<% } else if (is_tag()) { %>
+  <% var background = theme.images.tag; %>
+<% } else if (page.layout === 'about') { %>
+  <% var background = theme.images.about; %>
 <% } %>
 
 <%
@@ -54,15 +69,30 @@ pageTitle += ' [ ' + config.title + ' ]';
       'blur-' + blurLevels[theme.background_blur - 1] :
       '';
 %>
-<% if (!theme.mode.layout || theme.mode.layout !== 'parallax') { %>
+
+<% if (background && !theme.mode.layout || theme.mode.layout !== 'parallax') { %>
   <div class="background-wrapper <%= blurLevel %>">
     <img src="<%= background %>">
   </div>
   <% var containerOuterClass = 'container-outer' %>
-<% } else { %>
-  <%- partial('partials/parallax.ejs') %>
+<% } else if (background) { %>
+  <%- partial('partials/parallax.ejs', {
+    background: background
+  }, {
+    cache: true
+  }) %>
   <% var containerOuterClass = '' %>
+<% } else { %>
+  <div class="parallax-container-replacement transparent">
+    <% if (is_home()) { %>
+      <div class="container hide-on-med-and-down valign center-align <%= theme.titleColor %>-text">
+        <h1 class=""><%= config.title %></h1>
+        <h5><%= config.subtitle %></h5>
+      </div>
+    <% } %>
+  </div>
 <% } %>
+
 </div>
 
 <main id="container-outer" class="<%= containerOuterClass %>">
@@ -84,10 +114,14 @@ pageTitle += ' [ ' + config.title + ' ]';
 
     <div class="<%= mainClass %>" id="container-inner">
       <% if (page.layout === 'about') { %>
-        <%- partial('about.ejs') %>
+        <%- partial('about.ejs', {}, {
+          cache: true
+        }) %>
       <% } else { %>
         <%- body %>
-        <%- partial('partials/links') %>
+        <%- partial('partials/links', {}, {
+          cache: true
+        }) %>
       <% } %>
     </div>
 
@@ -96,14 +130,16 @@ pageTitle += ' [ ' + config.title + ' ]';
       <% if (theme.mode.layout && theme.mode.layout === 'parallax') { %>
         <%- partial('partials/sidebar', {
           background: 'transparent',
-          titleColor: theme.subColor,
-          color: theme.contentColor
+          titleColor: theme.color,
+          color: theme.subColor,
+          shadowLevel: 0
         }) %>
       <% } else { %>
         <%- partial('partials/sidebar', {
           background: 'transparent',
           titleColor: theme.titleColor,
-          color: theme.subColor
+          color: theme.subColor,
+          shadowLevel: theme.shadowLevel
         }) %>
       <% } %>
 
@@ -113,7 +149,9 @@ pageTitle += ' [ ' + config.title + ' ]';
 
 </main>
 
-<%- partial('partials/footer') %>
+<%- partial('partials/footer', {}, {
+  cache: true
+}) %>
 
 <% if (theme.busuanzi) { %>
   <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>

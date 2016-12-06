@@ -10,8 +10,8 @@
         %>
       <% } %>
       <ul class="collapsible popout" data-collapsible="expandable">
-        <li class="active z-depth-<%= theme.shadowLevel %> <%= theme.subColor %>-text">
-          <div class="collapsible-header active"><i class="material-icons">loyalty</i><%= date(firstPost.date, theme.date_format || config.date_format) %></div>
+        <li class="active z-depth-0 <%= theme.subColor %>-text">
+          <div class="collapsible-header active"><i class="material-icons">loyalty</i><%= date(firstPost.date, 'YYYY MM') %></div>
           <div class="collapsible-body">
             <p class="transparent">
               <% site.posts.sort('date', -1).each(function (post) { %>
@@ -20,8 +20,8 @@
                   </p>
                   </div>
                   </li>
-                  <li class="z-depth-<%= theme.shadowLevel %> <%= theme.subColor %>-text">
-                    <div class="collapsible-header"><i class="material-icons">loyalty</i><%= date(post.date, theme.date_format || config.date_format) %></div>
+                  <li class="z-depth-0 <%= theme.subColor %>-text">
+                    <div class="collapsible-header"><i class="material-icons">loyalty</i><%= date(post.date, 'YYYY MM') %></div>
                     <div class="collapsible-body"><p class="transparent">
                 <% } %>
                   <span class="row">
@@ -32,8 +32,7 @@
                       }) %>
                     </span>
                     <time datetime="<%= post.date.toJSON() %>" class="<%= theme.subColor %>-text right valign-wrapper m4 s12">
-                      <!-- <i class="material-icons valign">query_builder</i> -->
-                      <%= date(post.date, theme.time_format || config.time_format) %>
+                      <%= date(post.date, 'Do ' + (theme.time_format || config.time_format)) %>
                     </time>
                   </span>
               <% }); %>

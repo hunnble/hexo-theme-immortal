@@ -15,9 +15,9 @@
 <% } %>
 <section id="post" class="card article z-depth-0">
   <% if (theme.mode.layout === 'parallax') { %>
-    <div class="card-panel z-depth-0 <%= theme.subColor %>-text">
-      <h1 class="<%= theme.color %>-text"><%- page.title || '' %></h1>
-      <div class="valign-wrapper">
+    <div class="card-panel z-depth-0 <%= theme.contentColor %>-text">
+      <h1><%- page.title || '' %></h1>
+      <div class="valign-wrapper <%= theme.subColor %>-text">
         <i class="material-icons valign">query_builder</i>&nbsp
         <time datetime="<%= page.date.toJSON() %>" class="valign">
           <%= date(page.date, theme.date_format || config.date_format) %>
@@ -26,11 +26,19 @@
       </div>
 
       <% if (theme.busuanzi) { %>
-        <div class="valign-wrapper sm-text">
+        <div class="valign-wrapper sm-text <%= theme.subColor %>-text">
           <i class="material-icons valign">grade</i>&nbsp
           <span id="busuanzi_container_page_pv" class="valign">
             <%= _p('page_pv') %><span id="busuanzi_value_page_pv"></span>次
           </span>
+        </div>
+      <% } %>
+
+      <% if (page.tags && page.tags.length > 0) { %>
+        <div class="section right">
+          <% page.tags.each(function (tag, index) { %>
+            <span class="new badge <%= theme.tagColors[index % page.tags.length] %> left" data-badge-caption=""><a class="<%= theme.titleColor %>-text" href=<%= url_for(tag.path) %>><%= tag.name %></a></span>
+          <% }); %>
         </div>
       <% } %>
 
@@ -51,13 +59,13 @@
         </div>
       <% } %>
 
-      <% if (page.tags && page.tags.length > 0) { %>
+      <!-- <% if (page.tags && page.tags.length > 0) { %>
         <div class="section">
           <% page.tags.each(function (tag, index) { %>
             <span class="new badge <%= theme.tagColors[index % page.tags.length] %> left" data-badge-caption=""><a class="<%= theme.titleColor %>-text" href=<%= url_for(tag.path) %>><%= tag.name %></a></span>
           <% }); %>
         </div>
-      <% } %>
+      <% } %> -->
 
     </div>
   <% } else { %>

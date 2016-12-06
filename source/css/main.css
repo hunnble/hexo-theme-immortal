@@ -104,7 +104,7 @@ code {
     white-space: pre; }
 
 code, table .line {
-  font-family: Consolas, Monaco, Courier New, Lucida Console; }
+  font-family: Roboto, Consolas, Monaco, Courier New, Lucida Console, sans-serif; }
 
 pre {
   position: relative; }
@@ -123,6 +123,9 @@ pre {
 
 .code .hljs {
   min-height: 41px; }
+
+.gutter {
+  width: 2rem; }
 
 figure.highlight {
   margin-left: auto;
@@ -255,6 +258,7 @@ footer {
   line-height: 1.8rem; }
   .article .link {
     text-decoration: underline;
+    color: #2196f3;
     word-break: break-all; }
   .article blockquote footer {
     font-style: italic; }
@@ -290,6 +294,9 @@ footer {
   margin-top: 0;
   margin-bottom: 2rem;
   padding-bottom: 2rem; }
+  .recent-post-item .title-icon {
+    margin: .4375rem;
+    vertical-align: sub; }
 
 .category {
   float: none !important;
@@ -309,19 +316,22 @@ footer {
     opacity: .8; }
 
 .sidebar {
-  margin-top: 1.75rem;
   margin-left: 6rem; }
   .sidebar .category-list-count, .sidebar .tag-list-count {
     float: right; }
   .sidebar .category-list-child {
     margin-left: .5rem; }
   .sidebar .collection .collection-item {
-    padding: .5rem;
-    font-size: .8rem; }
+    padding: .5rem; }
   .sidebar i {
     margin: 0 !important; }
-  .sidebar a:hover {
-    text-decoration: underline; }
+  .sidebar a {
+    -webkit-transition: color 1s;
+    -moz-transition: color 1s;
+    -ms-transition: color 1s;
+    transition: color .5s; }
+    .sidebar a:hover {
+      color: #2196f3; }
 
 .sidebar-default {
   margin-top: 2.25rem; }
@@ -351,3 +361,6 @@ footer {
   line-height: 200%; }
   .collapsible span.row a:hover {
     text-decoration: underline; }
+
+.parallax-container-replacement {
+  height: 12.5rem; }

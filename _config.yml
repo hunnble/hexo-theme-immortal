@@ -13,22 +13,22 @@ links:
     href: https://github.com/hunnble
     icon: /images/github.png
     color: black
-  # weibo:
-  #   href: http://www.weibo.com/5597091497/profile?topnav=1&wvr=6
-  #   icon: /images/weibo.png
-  #   color: red
+  weibo:
+    href: http://www.weibo.com/5597091497/profile?topnav=1&wvr=6
+    icon: /images/weibo.png
+    color: red
   zhihu:
     href: https://www.zhihu.com/people/han-te-79
     icon: /images/zhihu.png
     color: blue
+  mail:
+    href: mailto:hante_hunter@163.com
+    icon: /images/mail.png
+    color: green
   # douban:
   #   href: https://book.douban.com/
   #   icon: /images/douban.png
   #   color: green
-  mail:
-    href: mailto:hante_hunter@163.com
-    icon: /images/mail.png
-    color: teal
   # twitter:
   #   href: https://twitter.com/
   #   icon: /images/twitter.png
@@ -60,7 +60,7 @@ widgits:
   search: true
   archive: true
   category: true
-  tag: 'cloud'
+  tag: true
   recent_posts: true
   recent_comments: true
   links: true
@@ -68,8 +68,13 @@ widgits:
 # Miscelaneous
 favicon: /images/favicon.ico
 
-# background
-background: /images/background.jpg
+# images
+images:
+  home: /images/background.jpg
+  about: /images/background.jpg
+  archive: /images/archive.jpg
+  category: /images/background.jpg
+  tag: /images/tag.jpg
 
 # avatar
 avatar: /images/avatar.png
@@ -96,11 +101,11 @@ highlight:
 fancybox: true
 
 # pagination numbers
-prev_num: 2
-next_num: 2
+prev_num: 4
+next_num: 4
 
 # count of recent posts
-recent_count: 10
+recent_count: 5
 
 # Date / Time format
 date_format: YYYY MMM Do
@@ -113,21 +118,21 @@ translucent: false
 background_blur: false
 
 # color and subColor
-color: lighten-3 blue
-subColor: lighten-4 blue-grey
+color: lighten-3 teal
+subColor: blue-grey
 titleColor: white
 contentColor: black
 
 # tag colors
 tagColors:
-  - blue
   - amber
   - green
   - red
   - yellow
+  - blue
 
 # shadow level
-shadowLevel: 0
+shadowLevel: 5
 
 # mode
 # layout: parallax/default

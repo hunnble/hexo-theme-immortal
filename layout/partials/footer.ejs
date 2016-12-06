@@ -6,14 +6,21 @@
 
 <footer class="page-footer <%= theme.color %> <%= translucent %>">
   <div class="container section">
-    <div class="row">
-      <div class="col l6 s12">
-        <p class="<%= theme.titleColor %>-text text-lighten-4">
-          Site by <%= config.author || theme.author %> using <%- link_to('https://hexo.io/zh-cn/', 'hexo', {
-            external: config.external_link
-          }) %>
-        </p>
-        <div class="section">
+    <div class="center-align <%= theme.titleColor %>-text text-lighten-4">
+      <p>
+        Site by <%= config.author || theme.author %> using <%- link_to('https://hexo.io/zh-cn/', 'hexo', {
+          external: config.external_link
+        }) %>
+      </p>
+      <% if (theme.busuanzi) { %>
+        <h6>
+          <%= _p('pv') %>&nbsp;<span id="busuanzi_value_site_pv"></span>
+          <%= _p('uv') %>&nbsp;<span id="busuanzi_value_site_uv"></span>
+        </h6>
+      <% } %>
+    </div>
+
+        <!-- <div class="section">
           <% if (config.external_link) { %>
             <% var target = '_blank' %>
           <% } else { %>
@@ -30,10 +37,9 @@
               <% } %>
             <% }); %>
           </ul>
-        </div>
-      </div>
-      <div class="col l4 offset-l2 s12">
-        <h6 class="<%= theme.titleColor %>-text"><%= _p('friend_title') %></h6>
+        </div> -->
+
+        <!-- <h6 class="<%= theme.color %>-text"><%= _p('friend_title') %></h6>
         <% if (theme.friends) { %>
           <ul>
             <% Object.keys(theme.friends).forEach(function (key) { %>
@@ -45,22 +51,10 @@
               </li>
             <% }); %>
           </ul>
-        <% } %>
-        <% if (theme.busuanzi) { %>
-          <h6 class="<%= theme.titleColor %>-text">
-            <%= _p('pv') %>&nbsp;<span id="busuanzi_value_site_pv"></span>
-          </h6>
-          <h6 class="<%= theme.titleColor %>-text">
-            <%= _p('uv') %>&nbsp;<span id="busuanzi_value_site_uv"></span>
-          </h6>
-        <% } %>
-      </div>
-    </div>
+        <% } %> -->
+
   </div>
-  <div class="footer-copyright">
-    <div class="container">
-    © 2016 <%= config.author || theme.author %>
-    <a class="<%= theme.titleColor || white %>-text text-lighten-4 right" href="#!">More Links</a>
-    </div>
+  <div class="footer-copyright center-align">
+    © 2016 <%= config.author %>
   </div>
 </footer>

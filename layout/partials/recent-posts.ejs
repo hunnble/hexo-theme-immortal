@@ -24,16 +24,17 @@
     <% site.posts.sort('date', -1).skip((page.current - 1 || 0) * (config.per_page || theme.per_page)).limit(config.per_page || theme.per_page).each(function(post) { %>
       <div class="card-panel z-depth-0 recent-post-item">
 
-        <div class="card-title">
+        <div class="card-title <%= theme.subColor %>-text">
+          <i class="material-icons title-icon">dashboard</i>
           <% if (post.link) { %>
             <%- link_to(post.link, post.title, {
               external: theme.external_link,
-              class: 'flow-text ' + theme.color + '-text inline-title'
+              class: 'flow-text inline-title'
             }) %>
           <% } else if (post.title) { %>
             <%- link_to(config.root + post.path, post.title, {
               external: theme.external_link,
-              class: 'flow-text ' + theme.color + '-text inline-title'
+              class: 'flow-text inline-title'
             }) %>
           <% } else { %>
             <%- link_to('#', '', {
@@ -90,7 +91,7 @@
           <% } %>
           <% post.tags.each(function (tag, index) { %>
             <span class="new badge <%= theme.tagColors[index % post.tags.length] %>" data-badge-caption="">
-              <%- link_to(url_for(tag.path), tag.name, {
+              <%- link_to(url_for(tag.path), '#' + tag.name, {
                 external: theme.external_link,
                 class: (theme.titleColor || white) + '-text'
               }) %>

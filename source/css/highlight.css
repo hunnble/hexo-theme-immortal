@@ -10,7 +10,7 @@ code {
     white-space: pre; }
 
 code, table .line {
-  font-family: Consolas, Monaco, Courier New, Lucida Console; }
+  font-family: Roboto, Consolas, Monaco, Courier New, Lucida Console, sans-serif; }
 
 pre {
   position: relative; }
@@ -29,6 +29,9 @@ pre {
 
 .code .hljs {
   min-height: 41px; }
+
+.gutter {
+  width: 2rem; }
 
 figure.highlight {
   margin-left: auto;

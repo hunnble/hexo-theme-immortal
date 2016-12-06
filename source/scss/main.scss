@@ -6,6 +6,7 @@ $zIndex1: -100;
 $zIndex2: 1;
 $navTop: 4rem;
 $floatingBtnHeight: 3.5rem;
+$blue: #2196f3;
 
 @mixin blur($value) {
   -webkit-filter: blur(#{$value}px);
@@ -84,6 +85,7 @@ footer {
   line-height: 1.8rem;
   .link {
     text-decoration: underline;
+    color: $blue;
     word-break: break-all;
   }
   blockquote footer {
@@ -127,6 +129,10 @@ footer {
   margin-top: 0;
   margin-bottom: 2rem;
   padding-bottom: 2rem;
+  .title-icon {
+    margin: .4375rem;
+    vertical-align: sub;
+  }
 }
 .category {
   float: none !important;
@@ -147,7 +153,7 @@ footer {
   }
 }
 .sidebar {
-  margin-top: 1.75rem;
+  // margin-top: 1.75rem;
   margin-left: 6rem;
   .category-list-count, .tag-list-count {
     float: right;
@@ -158,14 +164,20 @@ footer {
   .collection {
     .collection-item {
       padding: .5rem;
-      font-size: .8rem;
+      // font-size: .8rem;
     }
   }
   i {
     margin: 0 !important;
   }
-  a:hover {
-    text-decoration: underline;
+  a {
+    -webkit-transition: color 1s;
+    -moz-transition: color 1s;
+    -ms-transition: color 1s;
+    transition: color .5s;
+    &:hover {
+      color: $blue;
+    }
   }
 }
 .sidebar-default {
@@ -206,6 +218,9 @@ footer {
       text-decoration: underline;
     }
   }
+}
+.parallax-container-replacement {
+  height: 12.5rem;
 }
 
 @media only screen and (max-width : 992px) {
