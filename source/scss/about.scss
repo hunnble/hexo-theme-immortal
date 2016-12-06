@@ -1,4 +1,8 @@
 .about {
+  margin-top: 0;
+  &.hide-on-med-and-up>header {
+    padding-top: 6rem;
+  }
   .row {
     overflow: hidden;
   }
@@ -8,8 +12,5 @@
   }
   >header {
     padding: 1rem;
-    >.avatar-bg {
-      // margin-top: -3.75rem;
-    }
   }
 }

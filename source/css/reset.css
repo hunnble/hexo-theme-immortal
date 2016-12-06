@@ -71,8 +71,10 @@ blockquote {
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased; }
 
-.badge:hover {
-  opacity: .5; }
+.badge {
+  margin-bottom: .2rem; }
+  .badge:hover {
+    opacity: .5; }
 
 .row .col {
   padding: 0; }

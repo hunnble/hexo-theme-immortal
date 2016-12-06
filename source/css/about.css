@@ -1,9 +1,11 @@
-.about .row {
-  overflow: hidden; }
-
-.about .icon {
-  margin: 0.5rem;
-  float: left; }
-
-.about > header {
-  padding: 1rem; }
+.about {
+  margin-top: 0; }
+  .about.hide-on-med-and-up > header {
+    padding-top: 6rem; }
+  .about .row {
+    overflow: hidden; }
+  .about .icon {
+    margin: 0.5rem;
+    float: left; }
+  .about > header {
+    padding: 1rem; }

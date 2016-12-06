@@ -117,3 +117,10 @@ function sidebar() {
   $sidebar.find('ul li').addClass('collection-item');
 
 }
+
+function tool() {
+  $('#back-to-top').click(function(event) {
+    event.preventDefault();
+    $('body').animate({ scrollTop: 0 }, 'slow');
+  });
+}

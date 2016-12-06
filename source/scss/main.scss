@@ -222,7 +222,17 @@ footer {
 .parallax-container-replacement {
   height: 12.5rem;
 }
-
-@media only screen and (max-width : 992px) {
-
+.sibling-post {
+  a {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    text-decoration: none !important;
+    word-break: inherit !important;
+    width: auto;
+    height: auto;
+    max-width: 50%;
+    i {
+      margin: 0;
+    }
+  }
 }

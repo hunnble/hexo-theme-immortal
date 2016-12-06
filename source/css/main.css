@@ -71,8 +71,10 @@ blockquote {
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased; }
 
-.badge:hover {
-  opacity: .5; }
+.badge {
+  margin-bottom: .2rem; }
+  .badge:hover {
+    opacity: .5; }
 
 .row .col {
   padding: 0; }
@@ -143,15 +145,17 @@ figure.highlight {
 .highlight .line.marked, .highlight .line.marked * {
   color: #e23f5c !important; }
 
-.about .row {
-  overflow: hidden; }
-
-.about .icon {
-  margin: 0.5rem;
-  float: left; }
-
-.about > header {
-  padding: 1rem; }
+.about {
+  margin-top: 0; }
+  .about.hide-on-med-and-up > header {
+    padding-top: 6rem; }
+  .about .row {
+    overflow: hidden; }
+  .about .icon {
+    margin: 0.5rem;
+    float: left; }
+  .about > header {
+    padding: 1rem; }
 
 .blur-sm {
   -webkit-filter: blur(5px);
@@ -364,3 +368,14 @@ footer {
 
 .parallax-container-replacement {
   height: 12.5rem; }
+
+.sibling-post a {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  text-decoration: none !important;
+  word-break: inherit !important;
+  width: auto;
+  height: auto;
+  max-width: 50%; }
+  .sibling-post a i {
+    margin: 0; }

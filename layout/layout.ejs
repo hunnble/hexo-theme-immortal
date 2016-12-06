@@ -49,8 +49,8 @@ pageTitle += ' [ ' + config.title + ' ]';
 
 <% if (!theme.images || theme.images.length === 0) { %>
   <% var background = ''; %>
-<% } else if (is_post() && page.background) { %>
-  <% var background = page.background %>
+<% } else if (is_post()) { %>
+  <% var background = page.background || theme.images.home %>
 <% } else if (is_home()) { %>
   <% var background = theme.images.home; %>
 <% } else if (is_archive()) { %>

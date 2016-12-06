@@ -17,6 +17,24 @@
   <% if (theme.mode.layout === 'parallax') { %>
     <div class="card-panel z-depth-0 <%= theme.contentColor %>-text">
       <h1><%- page.title || '' %></h1>
+
+      <% if (page.categories && page.categories.length > 0) { %>
+        <div class="valign-wrapper section">
+          <% var pathname = ''; %>
+          <% page.categories.each(function (category, i) { %>
+            <% pathname += '/' + category.name; %>
+            <span class="new badge category <%= theme.color %> valign" data-badge-caption="">
+              <%- link_to(url_for(config.category_dir) + pathname, category.name, {
+                external: theme.external_link
+              }) %>
+            </span>
+            <% if (i < page.categories.length - 1) { %>
+              <i class="tiny material-icons <%= theme.color %>-text valign">chevron_right</i>
+            <% } %>
+          <% }); %>
+        </div>
+      <% } %>
+
       <div class="valign-wrapper <%= theme.subColor %>-text">
         <i class="material-icons valign">query_builder</i>&nbsp
         <time datetime="<%= page.date.toJSON() %>" class="valign">
@@ -37,35 +55,15 @@
       <% if (page.tags && page.tags.length > 0) { %>
         <div class="section right">
           <% page.tags.each(function (tag, index) { %>
-            <span class="new badge <%= theme.tagColors[index % page.tags.length] %> left" data-badge-caption=""><a class="<%= theme.titleColor %>-text" href=<%= url_for(tag.path) %>><%= tag.name %></a></span>
-          <% }); %>
-        </div>
-      <% } %>
-
-      <% if (page.categories && page.categories.length > 0) { %>
-        <div class="valign-wrapper section">
-          <% var pathname = ''; %>
-          <% page.categories.each(function (category, i) { %>
-            <% pathname += '/' + category.name; %>
-            <span class="new badge category <%= theme.color %> valign" data-badge-caption="">
-              <%- link_to(url_for(config.category_dir) + pathname, category.name, {
-                external: theme.external_link
+            <span class="new badge <%= theme.tagColors[index % page.tags.length] %> left" data-badge-caption="">
+              <%- link_to(url_for(tag.path), '#' + tag.name, {
+                external: theme.external_link,
+                class: theme.titleColor + '-text'
               }) %>
             </span>
-            <% if (i < page.categories.length - 1) { %>
-              <i class="tiny material-icons <%= theme.color %>-text valign">chevron_right</i>
-            <% } %>
           <% }); %>
         </div>
       <% } %>
-
-      <!-- <% if (page.tags && page.tags.length > 0) { %>
-        <div class="section">
-          <% page.tags.each(function (tag, index) { %>
-            <span class="new badge <%= theme.tagColors[index % page.tags.length] %> left" data-badge-caption=""><a class="<%= theme.titleColor %>-text" href=<%= url_for(tag.path) %>><%= tag.name %></a></span>
-          <% }); %>
-        </div>
-      <% } %> -->
 
     </div>
   <% } else { %>
@@ -110,6 +108,25 @@
     <% } %>
 
     <%- page.content %>
+
+    <div class="sibling-post center-align card-panel z-depth-0 section">
+
+      <% if (page.next) { %>
+        <a href="<%= url_for(page.next.path) %>" class="btn-flat <%= theme.subColor %>-text right">
+          <i class="material-icons right">chevron_right</i>
+          <%= page.next.title %>
+        </a>
+      <% } %>
+
+      <% if (page.prev) { %>
+        <a href="<%= url_for(page.prev.path) %>" class="btn-flat <%= theme.subColor %>-text left">
+          <i class="material-icons left">chevron_left</i>
+          <%= page.prev.title %>
+        </a>
+      <% } %>
+
+    </div>
+
 
     <% if (theme.duoshuo_shortname) { %>
       <section class="comment" id="duoshuo">

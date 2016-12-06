@@ -3,7 +3,7 @@
     <i class="large material-icons">location_on</i>
   </a>
   <ul>
-    <% Object.keys(theme.links).forEach(function(key, index) { %>
+    <!-- <% Object.keys(theme.links).forEach(function(key, index) { %>
       <% if (theme.links[key].href && theme.links[key].icon) { %>
         <li>
           <a class="btn-floating <%= theme.links[key].color || theme.color %> waves-effect %>" href=<%= theme.links[key].href %>>
@@ -11,6 +11,11 @@
           </a>
         </li>
       <% } %>
-    <% }); %>
+    <% }); %> -->
+    <li>
+      <a id="back-to-top" class="btn-floating <%= theme.color %> waves-effect %>" href="#">
+        <i class="material-icons">navigation</i>
+      </a>
+    </li>
   </ul>
 </div>
