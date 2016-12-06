@@ -119,11 +119,27 @@ pageTitle += ' [ ' + config.title + ' ]';
         }) %>
       <% } else { %>
         <%- body %>
-        <%- partial('partials/links', {}, {
+        <%- partial('partials/tool', {}, {
           cache: true
         }) %>
       <% } %>
     </div>
+
+    <aside class="col m2 push-m2 hide-on-med-and-down">
+
+      <% if (is_post()) { %>
+
+        <div class="toc transparent card-panel z-depth-0">
+          <%- toc(page.content, {
+            'class': 'table-of-contents',
+            'list_number': false
+          }) %>
+        </div>
+
+      <% } %>
+
+    </aside>
+
 
     <% if (theme.widgits && _.some(theme.widgits, Boolean) && is_home()) { %>
 

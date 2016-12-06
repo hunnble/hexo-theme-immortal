@@ -10,7 +10,7 @@ $(document).ready(function() {
   sidebar();
   // links();
   highlight();
-  post();
+  post(parallaxOffset);
   fancybox();
 
 });
@@ -62,7 +62,7 @@ function highlight() {
   });
 }
 
-function post() {
+function post(offset) {
   // $('.carousel.carousel-slider')
   //   .carousel({
   //     dist: 0,
@@ -75,18 +75,21 @@ function post() {
   if (!$toc.offset()) {
     return false;
   }
-  // $toc.pushpin({ offset: $toc.offset().top });
+  $toc.pushpin({
+    top: offset,
+    offset: $toc.offset().top - offset
+  });
 
-  // var hash = window.location.hash;
-  // var pathList = $('.toc li a');
-  // for (var i = 0, l = pathList.length; i < l; i++) {
-  //   var tempa = pathList.eq(i);
-  //   $(tempa.attr('href')).scrollSpy();
-  //
-  //   if (tempa.attr('href') === hash) {
-  //     tempa.parent().addClass('active');
-  //   }
-  // }
+  var hash = window.location.hash;
+  var pathList = $('.toc li a');
+  for (var i = 0, l = pathList.length; i < l; i++) {
+    var tempa = pathList.eq(i);
+    $(tempa.attr('href')).scrollSpy();
+
+    if (tempa.attr('href') === hash) {
+      tempa.parent().addClass('active');
+    }
+  }
 }
 
 function article() {
@@ -113,7 +116,6 @@ function sidebar() {
   }
 
   $sidebar.find('ul').addClass('collection');
-  // $sidebar.find('ol').addClass('collection');
   $sidebar.find('ul li').addClass('collection-item');
 
 }

@@ -31,10 +31,15 @@ pre {
   list-style: none;
 }
 .code .hljs {
-  min-height: 41px;
+  height: 41px;
+  overflow: hidden;
 }
 .gutter {
   width: 2rem;
+  .hljs {
+    height: 41px;
+    overflow: hidden;
+  }
 }
 figure.highlight {
   margin-left: auto;

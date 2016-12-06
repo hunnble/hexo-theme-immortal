@@ -124,10 +124,14 @@ pre {
   list-style: none; }
 
 .code .hljs {
-  min-height: 41px; }
+  height: 41px;
+  overflow: hidden; }
 
 .gutter {
   width: 2rem; }
+  .gutter .hljs {
+    height: 41px;
+    overflow: hidden; }
 
 figure.highlight {
   margin-left: auto;
@@ -215,7 +219,7 @@ h6 {
   font-size: 0.6rem; }
 
 html {
-  font-family: GillSans, Calibri, Trebuchet, STKaiti, KaiTi, sans-serif; }
+  font-family: GillSans, Calibri, Trebuchet, Helvetica Neue, Helvetica, Tahoma, Hiragino Sans GB, STHeiti, Microsoft YaHei, SimHei, sans-serif; }
 
 body {
   display: flex;
@@ -351,9 +355,11 @@ footer {
 .sidebar-profile .collection-item {
   display: inline-block; }
 
-.toc ol > li {
-  margin-left: .5rem;
-  list-style-type: none; }
+.toc {
+  padding-top: 4rem; }
+  .toc ol > li {
+    margin-left: .5rem;
+    list-style-type: none; }
 
 .page-footer .link-wrapper {
   margin: .25rem; }

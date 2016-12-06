@@ -37,7 +37,7 @@ $i: 1;
 }
 
 html {
-  font-family: GillSans, Calibri, Trebuchet, STKaiti, KaiTi, sans-serif;
+  font-family: GillSans, Calibri, Trebuchet, Helvetica Neue, Helvetica, Tahoma, Hiragino Sans GB, STHeiti, Microsoft YaHei, SimHei, sans-serif;
 }
 body {
   display: flex;
@@ -198,6 +198,7 @@ footer {
   }
 }
 .toc {
+  padding-top: $navTop;
   ol>li {
     margin-left: .5rem;
     list-style-type: none;

@@ -73,8 +73,8 @@ images:
   home: /images/background.jpg
   about: /images/background.jpg
   archive: /images/archive.jpg
-  category: /images/background.jpg
-  tag: /images/tag.jpg
+  category: /images/archive.jpg
+  tag: /images/archive.jpg
 
 # avatar
 avatar: /images/avatar.png
