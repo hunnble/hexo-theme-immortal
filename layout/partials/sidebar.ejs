@@ -1,7 +1,7 @@
 <% if (theme.mode.layout && theme.mode.layout === 'parallax') { %>
-  <% var sidebarClass = 'col m3 push-m1 hide-on-med-and-down sidebar' %>
+  <% var sidebarClass = 'col m4 hide-on-med-and-down sidebar' %>
 <% } else { %>
-  <% var sidebarClass = 'col m3 push-m1 hide-on-med-and-down sidebar sidebar-default' %>
+  <% var sidebarClass = 'col m4 hide-on-med-and-down sidebar sidebar-default' %>
 <% } %>
 <aside class="<%= sidebarClass %>">
 
@@ -18,20 +18,7 @@
           <h3 class="center-align"><%= config.author %></h3>
           <div class="links">
             <ul class="center-align sidebar-profile">
-              <% if (config.external_link) { %>
-                <% var target = '_blank' %>
-              <% } else { %>
-                <% var target = '_self' %>
-              <% } %>
-              <% Object.keys(theme.links).forEach(function(key, index) { %>
-                <% if (theme.links[key].href && theme.links[key].icon) { %>
-                  <li class="transparent">
-                    <a target="<%= target %>" class="link-wrapper btn-floating <%= theme.links[key].color || theme.color %> center-align waves-effect z-depth-0 %>" href=<%= theme.links[key].href %>>
-                      <img class="link-img" src=<%= theme.links[key].icon %> alt=<%= key %>>
-                    </a>
-                  </li>
-                <% } %>
-              <% }); %>
+              <%- partial('partials/links.ejs') %>
             </ul>
           </div>
           <h5 class="description left-align"><%= config.description %></h5>

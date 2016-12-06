@@ -8,9 +8,11 @@
   <div class="container section">
     <div class="center-align <%= theme.titleColor %>-text text-lighten-4">
       <p>
-        Site by <%= config.author || theme.author %> using <%- link_to('https://hexo.io/zh-cn/', 'hexo', {
+        Powerd by <%- link_to('https://hexo.io/zh-cn/', 'hexo', {
           external: config.external_link
-        }) %>
+        }) %>. Theme by <%- link_to('https://github.com/hunnble/hexo-theme-immortal', 'immortal', {
+          external: config.external_link
+        }) %>.
       </p>
       <% if (theme.busuanzi) { %>
         <h6>
@@ -19,40 +21,6 @@
         </h6>
       <% } %>
     </div>
-
-        <!-- <div class="section">
-          <% if (config.external_link) { %>
-            <% var target = '_blank' %>
-          <% } else { %>
-            <% var target = '_self' %>
-          <% } %>
-          <ul>
-            <% Object.keys(theme.links).forEach(function(key, index) { %>
-              <% if (theme.links[key].href && theme.links[key].icon) { %>
-                <li class="left">
-                  <a target="<%= target %>" class="link-wrapper btn-floating <%= theme.links[key].color || theme.color %> center-align waves-effect %>" href=<%= theme.links[key].href %>>
-                    <img class="link-img" src=<%= theme.links[key].icon %> alt=<%= key %>>
-                  </a>
-                </li>
-              <% } %>
-            <% }); %>
-          </ul>
-        </div> -->
-
-        <!-- <h6 class="<%= theme.color %>-text"><%= _p('friend_title') %></h6>
-        <% if (theme.friends) { %>
-          <ul>
-            <% Object.keys(theme.friends).forEach(function (key) { %>
-              <li>
-                <%- link_to(theme.friends[key], key, {
-                  class: theme.titleColor + '-text',
-                  external: config.external_link
-                }) %>
-              </li>
-            <% }); %>
-          </ul>
-        <% } %> -->
-
   </div>
   <div class="footer-copyright center-align">
     © 2016 <%= config.author %>

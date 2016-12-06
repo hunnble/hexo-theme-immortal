@@ -105,7 +105,7 @@ pageTitle += ' [ ' + config.title + ' ]';
 
   <% var mainClass = 'col s12 m10 push-m1'; %>
   <% if (theme.widgits && _.some(theme.widgits, Boolean) && is_home()) { %>
-    <% mainClass += ' l7 push-l1'; %>
+    <% mainClass += ' l8'; %>
   <% } else { %>
     <% mainClass += ' l8 push-l2'; %>
   <% } %>
@@ -125,20 +125,16 @@ pageTitle += ' [ ' + config.title + ' ]';
       <% } %>
     </div>
 
-    <aside class="col m2 push-m2 hide-on-med-and-down">
-
-      <% if (is_post()) { %>
-
+    <% if (is_post()) { %>
+      <aside class="col m2 push-m2 hide-on-med-and-down">
         <div class="toc transparent card-panel z-depth-0">
           <%- toc(page.content, {
             'class': 'table-of-contents',
             'list_number': false
           }) %>
         </div>
-
-      <% } %>
-
-    </aside>
+      </aside>
+    <% } %>
 
 
     <% if (theme.widgits && _.some(theme.widgits, Boolean) && is_home()) { %>
