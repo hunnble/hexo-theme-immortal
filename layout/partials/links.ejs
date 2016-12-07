@@ -5,7 +5,7 @@
 <% } %>
 <% Object.keys(theme.links).forEach(function(key, index) { %>
   <% if (theme.links[key].href && theme.links[key].icon) { %>
-    <li class="transparent">
+    <li class="transparent collection-item">
       <a target="<%= target %>" class="link-wrapper btn-floating <%= theme.links[key].color || theme.color %> center-align waves-effect z-depth-0 %>" href=<%= theme.links[key].href %>>
         <img class="link-img" src=<%= theme.links[key].icon %> alt=<%= key %>>
       </a>
@@ -13,7 +13,7 @@
   <% } %>
 <% }); %>
 <% if (theme.rss) { %>
-  <li class="transparent">
+  <li class="transparent collection-item">
     <a target="<%= target %>" class="link-wrapper btn-floating <%= theme.color %> center-align waves-effect z-depth-0 %>" href=<%= theme.rss %>>
       <img class="link-img" src="/images/rss.png" alt="">
     </a>

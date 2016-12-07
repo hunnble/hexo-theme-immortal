@@ -18,7 +18,7 @@
 </section>
 
 <section class="card hide-on-med-and-up about <%= zDepth %>">
-  <header class="center-align <%= theme.color %> <%= theme.titleColor %>-text z-depth-0">
+  <header class="center-align <%= theme.color %> <%= theme.titleColor %>-text z-depth-<%= theme.shadowLevel %>">
     <img class="circle avatar-bg" src=<%= config.avatar || theme.avatar %>>
     <h3><%= config.author %></h3>
     <div class="subheader section container left-align description"><%= config.description || theme.description %></div>

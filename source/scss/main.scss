@@ -1,3 +1,4 @@
+@import 'materialize';
 @import 'reset';
 @import 'highlight';
 @import 'about';
@@ -234,6 +235,47 @@ footer {
     max-width: 50%;
     i {
       margin: 0;
+    }
+  }
+}
+.collection-list {
+  @extend .collection;
+}
+.collection-list-item {
+  @extend .collection-item;
+}
+.collection-list-count {
+  @extend .right;
+}
+.article {
+  .card-content {
+    a {
+      @extend .link;
+    }
+    ul, ol {
+      @extend .collection;
+    }
+    li {
+      @extend .collection-item;
+    }
+    table {
+      @extend .responsive-table;
+    }
+  }
+}
+.about {
+  .article {
+    a {
+      @extend .link;
+    }
+    ul, ol {
+      @extend .collection;
+    }
+    li {
+      @extend .collection-item;
+    }
+    table {
+      @extend .responsive-table;
     }
   }
 }

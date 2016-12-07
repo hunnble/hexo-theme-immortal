@@ -10,11 +10,11 @@
 
     <h3 class="flow-text"><%= page.category %> (<%= page.posts.length %>)</h3>
 
-      <ul class="collection">
+      <ul class="left-align col push-l3 l6 push-m2 m8">
 
         <% page.posts.sort('date', -1).each(function(post) { %>
 
-          <li class="collection-item">
+          <li>
 
             <% if (post.date) { %>
               <time datetime="<%= post.date.toJSON() %>" class="inline-title">

@@ -17,7 +17,7 @@
           <img class="circle avatar-md" src="<%= config.avatar || theme.avatar %>">
           <h3 class="center-align"><%= config.author %></h3>
           <div class="links">
-            <ul class="center-align sidebar-profile">
+            <ul class="center-align sidebar-profile collection">
               <%- partial('partials/links.ejs') %>
             </ul>
           </div>
@@ -33,7 +33,8 @@
           <%= _p('category_title') %>
         </header>
         <%- list_categories({
-          depth: 1
+          depth: 1,
+          class: 'collection'
         }) %>
       </section>
     <% } %>
@@ -45,8 +46,8 @@
           <%= _p('tag_title') %>
         </header>
         <% if (theme.widgits.tag === 'cloud') { %>
-          <ul>
-            <li>
+          <ul class="collection">
+            <li class="collection-item">
               <%- tagcloud(site.tags, {
                 min_font: 16,
                 max_font: 32
@@ -54,7 +55,9 @@
             </li>
           </ul>
         <% } else { %>
-          <%- list_tags({}) %>
+          <%- list_tags({
+            class: 'collection'
+          }) %>
         <% } %>
       </section>
     <% } %>
@@ -66,7 +69,8 @@
           <%= _p('recent_title') %>
         </header>
         <%- list_posts({
-          amount: theme.recent_count
+          amount: theme.recent_count,
+          class: 'collection'
         }) %>
       </section>
     <% } %>

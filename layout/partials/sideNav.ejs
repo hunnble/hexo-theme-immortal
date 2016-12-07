@@ -2,9 +2,12 @@
   <li>
     <div class="userView <%= theme.color %>">
       <div class="background">
+        <h5 class="<%= theme.titleColor %>-text inline-title"><%= config.author %></h5>
       </div>
       <img class="circle" src=<%= config.avatar || theme.avatar %>>
-      <h5 class="<%= theme.titleColor %>-text inline-title"><%= config.author %></h5>
+      <h5 class="<%= theme.titleColor %>-text inline-title"><%= config.title %></h5>
+      <br />
+      <h5 class="<%= theme.titleColor %>-text inline-title"><%= config.subtitle %></h5>
     </div>
   </li>
   <% Object.keys(theme.menu).forEach(function(key) { %>

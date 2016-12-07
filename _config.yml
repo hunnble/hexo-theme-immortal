@@ -85,7 +85,6 @@ fonts:
 
 # stylesheets loaded in the <head>
 stylesheets:
-- /css/materialize.min.css
 - /css/main.css
 
 # scripts loaded in the end of the body
