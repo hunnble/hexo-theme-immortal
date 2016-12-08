@@ -127,9 +127,8 @@
 
     </div>
 
-
     <% if (theme.duoshuo_shortname) { %>
-      <section class="comment" id="duoshuo">
+      <div class="comment" id="duoshuo">
         <div class="ds-thread" data-thread-key="<%= page.layout %>-<%= page.slug %>" data-title="<%= page.title %>" data-url="<%= page.permalink %>"></div>
         <script type="text/javascript">
           var duoshuoQuery = { short_name:'<%= theme.duoshuo_shortname %>' };
@@ -140,7 +139,7 @@
           ds.charset = 'UTF-8';
           (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
         </script>
-      </section>
+      </div>
     <% } %>
 
   </div>

@@ -16,11 +16,6 @@ pageTitle += ' [ ' + config.title + ' ]';
   <title><%= pageTitle %></title>
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <% if (theme.fonts !== undefined && theme.fonts.length > 0) { %>
-    <% theme.fonts.forEach(function(url) { %>
-      <link rel="application/font-woff2" href="<%=url%>">
-    <% }); %>
-  <% } %>
   <%- favicon_tag(theme.favicon) %>
   <% if (theme.highlight.enable) { %>
     <% if (!theme.highlight.style || theme.highlight.style === 'default') { %>
@@ -34,7 +29,7 @@ pageTitle += ' [ ' + config.title + ' ]';
   <% } %>
   <% if (theme.stylesheets !== undefined && theme.stylesheets.length > 0) { %>
     <% theme.stylesheets.forEach(function(url) { %>
-      <link rel="stylesheet" href="<%=url%>">
+      <link rel="stylesheet" href="<%= url %>">
     <% }); %>
   <% } %>
 </head>
@@ -47,22 +42,6 @@ pageTitle += ' [ ' + config.title + ' ]';
   cache: true
 }) %>
 
-<% if (!theme.images || theme.images.length === 0) { %>
-  <% var background = ''; %>
-<% } else if (is_post()) { %>
-  <% var background = page.background || theme.images.home %>
-<% } else if (is_home()) { %>
-  <% var background = theme.images.home; %>
-<% } else if (is_archive()) { %>
-  <% var background = theme.images.archive; %>
-<% } else if (is_category()) { %>
-  <% var background = theme.images.category; %>
-<% } else if (is_tag()) { %>
-  <% var background = theme.images.tag; %>
-<% } else if (page.layout === 'about') { %>
-  <% var background = theme.images.about; %>
-<% } %>
-
 <%
   var blurLevels = ['sm', 'md', 'bg'],
     blurLevel = theme.background_blur ?
@@ -70,16 +49,31 @@ pageTitle += ' [ ' + config.title + ' ]';
       '';
 %>
 
-<% if (background && !theme.mode.layout || theme.mode.layout !== 'parallax') { %>
+<% if (theme.images && !theme.mode.layout || theme.mode.layout !== 'parallax') { %>
+
+  <% if (!theme.images || theme.images.length === 0) { %>
+    <% var background = ''; %>
+  <% } else if (is_post()) { %>
+    <% var background = page.background || theme.images.home %>
+  <% } else if (is_archive()) { %>
+    <% var background = theme.images.archive; %>
+  <% } else if (is_category()) { %>
+    <% var background = theme.images.category; %>
+  <% } else if (is_tag()) { %>
+    <% var background = theme.images.tag; %>
+  <% } else if (page.layout === 'about') { %>
+    <% var background = theme.images.about; %>
+  <% } else if (is_home()) { %>
+    <% var background = theme.images.home; %>
+  <% } %>
+
   <div class="background-wrapper <%= blurLevel %>">
     <img src="<%= background %>">
   </div>
   <% var containerOuterClass = 'container-outer' %>
-<% } else if (background) { %>
-  <%- partial('partials/parallax.ejs', {
-    background: background
-  }, {
-    cache: true
+<% } else if (theme.images) { %>
+  <%- partial('partials/parallax.ejs', {}, {
+    cache: false
   }) %>
   <% var containerOuterClass = '' %>
 <% } else { %>
@@ -105,7 +99,7 @@ pageTitle += ' [ ' + config.title + ' ]';
 
   <% var mainClass = 'col s12 m10 push-m1'; %>
   <% if (theme.widgits && _.some(theme.widgits, Boolean) && is_home()) { %>
-    <% mainClass += ' l8'; %>
+    <% mainClass += ' l7 push-l1'; %>
   <% } else { %>
     <% mainClass += ' l8 push-l2'; %>
   <% } %>

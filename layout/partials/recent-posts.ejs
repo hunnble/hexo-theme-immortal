@@ -25,7 +25,14 @@
       <div class="card-panel z-depth-0 recent-post-item">
 
         <% if (post.background) { %>
-          <img src="<%= post.background %>" alt="">
+          <% if (config.external_link) { %>
+            <% var target = '_blank'; %>
+          <% } else { %>
+            <% var target = '_self'; %>
+          <% } %>
+          <a href="<%= config.root + post.path %>" target="<%= target %>">
+            <img src="<%= post.background %>" alt="">
+          </a>
         <% } %>
 
         <div class="card-title <%= theme.subColor %>-text">

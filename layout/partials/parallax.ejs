@@ -5,12 +5,31 @@
       '';
 %>
 
+<% if (!theme.images || theme.images.length === 0) { %>
+  <% var background = ''; %>
+<% } else if (is_post()) { %>
+  <% var background = page.background || theme.images.home %>
+<% } else if (is_archive()) { %>
+  <% var background = theme.images.archive; %>
+<% } else if (is_category()) { %>
+  <% var background = theme.images.category; %>
+<% } else if (is_tag()) { %>
+  <% var background = theme.images.tag; %>
+<% } else if (page.layout === 'about') { %>
+  <% var background = theme.images.about; %>
+<% } else if (is_home()) { %>
+  <% var background = theme.images.home; %>
+<% } %>
+
 <div class="parallax-container valign-wrapper hide-on-small-only" style="height: <%= theme.parallax_height %>px">
-  <% if (is_home()) { %>
+  <% if (!is_post() && !is_archive() && !is_tag() && !is_category() && page.layout !== 'about') { %>
     <div class="container hide-on-med-and-down valign center-align <%= theme.titleColor %>-text">
       <h1><%= config.title %></h1>
       <h5><%= config.subtitle %></h5>
     </div>
   <% } %>
-  <div class="parallax <%= blurLevel %>"><img src="<%= background %>"></div>
+  <div class="parallax <%= blurLevel %>">
+    <img src="<%= background %>">
+    <!-- {% qnimg background %} -->
+  </div>
 </div>

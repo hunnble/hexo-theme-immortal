@@ -71,17 +71,13 @@ favicon: /images/favicon.ico
 # images
 images:
   home: /images/background.jpg
-  about: /images/background.jpg
+  about: /images/about.jpg
   archive: /images/archive.jpg
-  category: /images/archive.jpg
-  tag: /images/archive.jpg
+  category: /images/background.jpg
+  tag: /images/background.jpg
 
 # avatar
 avatar: /images/avatar.png
-
-# fonts loaded in the <head>
-fonts:
-- /fonts/material-icons/2fcrYFNaTjcS6g4U3t-Y5UEw0lE80llgEseQY3FEmqw.woff2
 
 # stylesheets loaded in the <head>
 stylesheets:
@@ -100,8 +96,8 @@ highlight:
 fancybox: true
 
 # pagination numbers
-prev_num: 4
-next_num: 4
+prev_num: 3
+next_num: 3
 
 # count of recent posts
 recent_count: 5
@@ -117,7 +113,7 @@ translucent: false
 background_blur: false
 
 # color and subColor
-color: lighten-3 teal
+color: lighten-2 teal
 subColor: blue-grey
 titleColor: white
 contentColor: black

@@ -1,4 +1,5 @@
 $red: rgb(226, 63, 92);
+$codeHeight: 2.5rem;
 
 code {
   overflow-x: auto;
@@ -31,13 +32,13 @@ pre {
   list-style: none;
 }
 .code .hljs {
-  height: 41px;
+  height: $codeHeight;
   overflow: hidden;
 }
 .gutter {
   width: 2rem;
   .hljs {
-    height: 41px;
+    height: $codeHeight;
     overflow: hidden;
   }
 }
