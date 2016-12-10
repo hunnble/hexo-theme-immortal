@@ -50,7 +50,6 @@ pageTitle += ' [ ' + config.title + ' ]';
 %>
 
 <% if (theme.images && !theme.mode.layout || theme.mode.layout !== 'parallax') { %>
-
   <% if (!theme.images || theme.images.length === 0) { %>
     <% var background = ''; %>
   <% } else if (is_post()) { %>
@@ -86,7 +85,6 @@ pageTitle += ' [ ' + config.title + ' ]';
     <% } %>
   </div>
 <% } %>
-
 </div>
 
 <main id="container-outer" class="<%= containerOuterClass %>">
@@ -165,8 +163,10 @@ pageTitle += ' [ ' + config.title + ' ]';
 <% if (theme.highlight.enable) { %>
   <script src="/js/highlight.min.js"></script>
 <% } %>
-<script type="text/javascript" src="/js/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="/js/materialize.min.js"></script>
+<!-- <script type="text/javascript" src="/js/jquery-2.1.1.min.js"></script> -->
+<script type="text/javascript" src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/materialize/0.97.8/js/materialize.min.js"></script>
+<!-- <script type="text/javascript" src="/js/materialize.min.js"></script> -->
 <% if (theme.fancybox) { %>
   <script type="text/javascript" src="/libs/fancybox/source/jquery.fancybox.pack.js"></script>
 <% } %>

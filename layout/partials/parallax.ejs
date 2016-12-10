@@ -23,13 +23,39 @@
 
 <div class="parallax-container valign-wrapper hide-on-small-only" style="height: <%= theme.parallax_height %>px">
   <% if (!is_post() && !is_archive() && !is_tag() && !is_category() && page.layout !== 'about') { %>
-    <div class="container hide-on-med-and-down valign center-align <%= theme.titleColor %>-text">
+    <div class="container hide-on-small-only valign center-align <%= theme.titleColor %>-text">
       <h1><%= config.title %></h1>
       <h5><%= config.subtitle %></h5>
     </div>
+  <% } else if (is_archive()) { %>
+    <div class="container hide-on-image-load hide-on-small-only valign center-align <%= theme.titleColor %>-text">
+      <h1><%= _p('archive_title') %></h1>
+    </div>
+  <% } else if (is_tag()) { %>
+    <div class="container hide-on-image-load hide-on-small-only valign center-align <%= theme.titleColor %>-text">
+      <h1><%= _p('tag_title') %></h1>
+    </div>
+  <% } else if (is_category()) { %>
+    <div class="container hide-on-image-load hide-on-small-only valign center-align <%= theme.titleColor %>-text">
+      <h1><%= _p('category_title') %></h1>
+    </div>
+  <% } else if (page.layout == 'about') { %>
+    <div class="container hide-on-image-load hide-on-small-only valign center-align <%= theme.titleColor %>-text">
+      <h1><%= _p('about_title') %></h1>
+    </div>
   <% } %>
-  <div class="parallax <%= blurLevel %>">
+  <div class="parallax <%= theme.color %> <%= blurLevel %>">
     <img src="<%= background %>">
     <!-- {% qnimg background %} -->
   </div>
+  <script type="text/javascript">
+    var container = document.querySelector('.parallax-container');
+    var tmpTitle = container.querySelector('.hide-on-image-load');
+    var img = container.querySelector('img');
+    img.onload = function() {
+      if (tmpTitle) {
+        tmpTitle.style.display = 'none';
+      }
+    }
+  </script>
 </div>
